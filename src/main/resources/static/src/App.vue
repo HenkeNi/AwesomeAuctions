@@ -1,20 +1,30 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <router-view />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
-export default {
-  name: 'App',
+//import Vue from 'vue'
+//npimport Component from 'vue-class-component'
+
+import { Vue, Component } from "vue-property-decorator";
+
+@Component({
+
   components: {
-    HelloWorld
-  }
-}
+
+  },
+})
+export default class App extends Vue {}
+
+//import { Vue } from "vue-property-decorator";
+
+
 </script>
+
+
 
 <style>
 #app {
