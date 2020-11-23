@@ -1,4 +1,18 @@
 package com.example.awesome_auctions.repositories;
 
-public interface BidRepo {
+import com.example.awesome_auctions.entities.Auction;
+import com.example.awesome_auctions.entities.Bid;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface BidRepo extends MongoRepository<Bid, String> {
+
+    //List<Bid> findByUserID(String id);
+    //List<Bid> findByAuctionID(String id);
+
+
+
 }
