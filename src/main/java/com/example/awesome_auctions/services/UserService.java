@@ -27,7 +27,9 @@ public class UserService {
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found by id"));
     }
 
-
+    public User findByName(String name) {
+        return userRepo.findByName(name).orElseThrow(RuntimeException::new);
+    }
 
     public User save(User user) {
         return userRepo.save(user);
