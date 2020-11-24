@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div>HELLO WORLD</div>
+    <div>AWESOME AUCTIONS</div>
     <router-view />
   </div>
 </template>
