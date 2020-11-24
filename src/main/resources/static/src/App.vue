@@ -7,20 +7,23 @@
 
 <script>
 
-//import Vue from 'vue'
-//npimport Component from 'vue-class-component'
+// import Vue from 'vue'
+// import { Component } from "vue-property-decorator";
 
-import { Vue } from "vue-property-decorator";
+// @Component({
+//   components: {
+//     // NavBar
+//   }
+// })
+// export default class App extends Vue {}
 
-
-export default class App extends Vue {
-  
-  created() {
-    console.log('hello-world')
+export default {
+  name: 'app',
+  components: {
+    
   }
 }
 
-//import { Vue } from "vue-property-decorator";
 
 </script>
 
