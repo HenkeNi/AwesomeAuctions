@@ -2,7 +2,13 @@
   <div class="home-page">
     <div class="container">
        <div class="row">
-      <div class="col s8">PICTURE</div>
+      <div class="col s8">PICTURE
+        <div class="row">
+          <div class="col s12">
+             <img src="./skor.jpg">
+          </div>
+        </div>
+      </div>
       <div class="col s4">INFO
         <div class="row">
       <div class="col s4">START PRICE
@@ -15,16 +21,23 @@
       <div class="col s12">LAY BID</div>
         </div>
         <div class="row">
-      <div class="col s12">BID BOX</div>
+      <div class="input-field col s12">
+          <input placeholder="Input bid" id="first_name" type="text" class="validate">
+          <label for="first_name">Lay bid</label>
+        </div>
         </div>
         <div class="row">
-      <div class="col s12">BID BUTTON</div>
+      <div class="col s12"><a href="" class="btn">PLACE BUD</a></div>
         </div>
     </div>
       
     </div>
     <div class="row">
-      <div class="col s8">DESCRIPTION</div>
+      <div class="col s8">DESCRIPTION
+        <div class="row">
+      <div class="col s12">Beatiful shoe</div>
+    </div>
+      </div>
     </div>
     </div>
     <div>
