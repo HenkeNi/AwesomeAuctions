@@ -61,7 +61,11 @@ export default { //class HomePage extends Vue {
     };
   },
   mounted () {
-    M.AutoInit()
+    M.AutoInit(),
+    fetch('http://localhost:5000/api/v1/auction')
+    .then(res => res.json())
+    .then(data => console.log(data))
+  
 }
 }
 
