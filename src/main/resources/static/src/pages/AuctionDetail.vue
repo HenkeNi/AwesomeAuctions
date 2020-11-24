@@ -1,6 +1,11 @@
 <template>
   <div class="home-page">
-    <h1>Auction List...</h1>
+    <div class="container">
+      <div class="col-6">
+        PICTURE
+      </div>
+    </div>
+    <h1>Auction Detail...</h1>
     <h1>{{title}}</h1>
     <div>
 
@@ -18,7 +23,7 @@
 export default { //class HomePage extends Vue {
   data() {
     return {
-      title: 'Hello World'
+      title: 'Details about auction'
     };
   }
 }
