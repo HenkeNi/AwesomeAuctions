@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <router-view />
+    <div>HELLO WORLD</div>
+    <!-- <router-view /> -->
   </div>
 </template>
 
@@ -9,21 +10,19 @@
 //import Vue from 'vue'
 //npimport Component from 'vue-class-component'
 
-import { Vue, Component } from "vue-property-decorator";
+import { Vue } from "vue-property-decorator";
 
-@Component({
 
-  components: {
-
-  },
-})
-export default class App extends Vue {}
+export default class App extends Vue {
+  
+  created() {
+    console.log('hello-world')
+  }
+}
 
 //import { Vue } from "vue-property-decorator";
 
-
 </script>
-
 
 
 <style>
