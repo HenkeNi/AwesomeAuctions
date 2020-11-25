@@ -62,11 +62,27 @@ export default { //class HomePage extends Vue {
   },
   mounted () {
     M.AutoInit(),
-    fetch('http://localhost:5000/api/v1/auction')
-    .then(res => res.json())
+    
+    fetch('http://localhost:5000/api/v1/auction'/*, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        productName:"Window",
+        description:"Fine window",
+        imageURL:"http://window",
+        startBid:299,
+        endDate:161616
+      })
+    }*/)
+    .then(res => {
+      return res.json()
+    })
     .then(data => console.log(data))
+    //.catch(error => console.log('ERROR'))
   
-}
+  }
 }
 
 </script>
