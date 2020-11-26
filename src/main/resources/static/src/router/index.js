@@ -13,9 +13,10 @@ const routes = [
     component: HomePage
   },
   {
-    path: '/detail',
+    path: '/detail/:auction',
     name: 'AuctionDetail',
-    component: AuctionDetail
+    component: AuctionDetail,
+    props: true,
   },
   // {
   //   path: "/auctionDetail/:auction",
