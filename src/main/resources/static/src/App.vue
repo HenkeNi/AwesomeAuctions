@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div>AWESOME AUCTIONS</div>
     <router-view />
   </div>
 </template>
@@ -16,7 +17,6 @@ export default {
 }
 
 </script>
-
 
 
 <style>
