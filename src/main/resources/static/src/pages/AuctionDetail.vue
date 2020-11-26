@@ -2,19 +2,21 @@
   <div class="home-page">
     <div class="container">
        <div class="row">
+         <h1>{{ this.$route.params.auction.productName }}</h1>
       <div class="col s8">PICTURE
         <div class="row">
           <div class="col s12">
-             <img src="./skor.jpg">
+             <img src="this.$route.params.auction.imageURL" alt="./skor.jpg">
           </div>
         </div>
       </div>
       <div class="col s4">INFO
         <div class="row">
       <div class="col s4">START PRICE
-        50
+        {{ this.$route.params.auction.startBid }}
       </div>
       <div class="col s4">ENDS</div> 
+      {{ this.$route.params.auction.endDate }}
       <div class="col s4">BID</div> 
         </div> 
         <div class="row">
@@ -35,7 +37,7 @@
     <div class="row">
       <div class="col s8">DESCRIPTION
         <div class="row">
-      <div class="col s12">Beatiful shoe</div>
+      <div class="col s12">{{ this.$route.params.auction.description }}</div>
     </div>
       </div>
     </div>
@@ -55,11 +57,13 @@
 import M from 'materialize-css'
 
 export default { //class HomePage extends Vue {
+  //props: ['auction'],
   data() {
     return {
       title: 'Details about auction'
     };
   },
+ 
   mounted () {
     M.AutoInit(),
     
