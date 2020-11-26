@@ -11,7 +11,6 @@ export default {
   name: 'app',
   components: {},
   created() {
-    console.log("IN APP");
     this.$store.dispatch('fetchAuctions');
   },
 }
