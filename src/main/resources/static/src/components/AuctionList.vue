@@ -43,8 +43,7 @@ export default {
   .article-list {
     background-color: lightblue;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    
+    flex-flow: row wrap;
+    justify-content: space-around;
   }
 </style>
