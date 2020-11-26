@@ -11,6 +11,12 @@ const routes = [
     name: 'HomePage',
     component: HomePage
   },
+  // {
+  //   path: "/auctionDetail/:auction",
+  //   name: "AuctionDetails",
+  //   component: AuctionDetails,
+  //   props: true,
+  // }
 
 
 
