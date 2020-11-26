@@ -11,8 +11,6 @@
 
 <script>
 
-// import prop...
-
 export default {
   props: ['auction'],
   data() {
@@ -22,8 +20,8 @@ export default {
   },
   methods: {
     goToAuctionDetails(auction) {
-      console.log("Passing auction: ", auction);
-      this.$router.push(`auctionDetail/${auction}`);
+      this.$router.push({ name: 'AuctionDetail', params: {auction: auction} });
+      //this.$router.push(`detail/${auction}`);
     }
   }
 }
