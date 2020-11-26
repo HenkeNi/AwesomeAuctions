@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -22,16 +23,19 @@ public class UserController {
 
 
     @GetMapping
+    @Secured({"ROLE_USER", "ROLE,ADMIN"})
     public ResponseEntity<List<User>> findUser(@RequestParam(required = false) String name) {
         var user = userService.findAll();
         return ResponseEntity.ok(user);
     }
 
     @GetMapping("/{id}")
+    @Secured({"ROLE_EDITOR", "ROLE_ADMIN"})
     public ResponseEntity<User> findUserById(@PathVariable String id) {
         return ResponseEntity.ok(userService.findById(id));
     }
 
+    @Secured("ROLE_ADMIN")
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> saveUser(@RequestBody User user) {
         var savedUser = userService.save(user);
@@ -40,6 +44,7 @@ public class UserController {
 
 
     @PutMapping("/{id}")
+    @Secured({"ROLE_EDITOR", "ROLE_ADMIN", "ROLE_USER"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateUser(@PathVariable String id, @RequestBody User user) {
         userService.update(id, user);
@@ -47,6 +52,7 @@ public class UserController {
 
 
     @DeleteMapping("/{id}")
+    @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteUser(@PathVariable String id) {
         userService.delete(id);
