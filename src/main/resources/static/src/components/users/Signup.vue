@@ -48,7 +48,7 @@ export default {
     },
     methods: {
         async signup(){
-            fetch('http://localhost:5000/api/v1/user/', {
+            fetch('http://localhost:5000/api/v1/user', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
