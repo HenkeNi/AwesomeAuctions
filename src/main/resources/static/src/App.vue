@@ -6,23 +6,14 @@
 
 <script>
 
-// import Vue from 'vue'
-// import { Component } from "vue-property-decorator";
-
-// @Component({
-//   components: {
-//     // NavBar
-//   }
-// })
-// export default class App extends Vue {}
-
 export default {
   name: 'app',
-  components: {
-    
-  }
+  components: {},
+  created() {
+    console.log("IN APP");
+    this.$store.dispatch('fetchAuctions');
+  },
 }
-
 
 </script>
 
