@@ -57,7 +57,8 @@ export default {
                     name: this.name,
                     phone: this.phoneNumber,
                     email: this.email,
-                    password: this.password
+                    password: this.password,
+                    roles: []
                 })
             }).then(res => {
                 return res.json()
