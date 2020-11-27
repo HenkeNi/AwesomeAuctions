@@ -24,12 +24,13 @@
         </div>
         <div class="row">
       <div class="input-field col s12">
-          <input placeholder="Input bid" id="first_name" type="text" class="validate">
+          <input placeholder="Input bid" id="first_name" type="text" class="validate" v-model="price">
           <label for="first_name">Lay bid</label>
+          <p>{{price}}</p>
         </div>
         </div>
         <div class="row">
-      <div class="col s12"><a href="" class="btn" @click="placeBid">PLACE BUD</a></div>
+      <div class="col s12"><a href="" class="btn" @click.prevent="placeBid(price, this.$route.params.auction.id)">PLACE BUD</a></div>
         </div>
     </div>
       
@@ -38,6 +39,7 @@
       <div class="col s8">DESCRIPTION
         <div class="row">
       <div class="col s12">{{ this.$route.params.auction.description }}</div>
+      <div class="col s12">{{ this.$route.params.auction.id }}</div>
     </div>
       </div>
     </div>
@@ -60,7 +62,8 @@ export default { //class HomePage extends Vue {
   //props: ['auction'],
   data() {
     return {
-      title: 'Details about auction'
+      title: 'Details about auction',
+      price: 0
     };
   },
  
@@ -76,7 +79,9 @@ export default { //class HomePage extends Vue {
   
   },
   methods: {
-    async placeBid(){
+    async placeBid(price, id){
+      
+      console.log(price, id);
       fetch('http://localhost:5000/api/v1/bid', {
       method: 'POST',
       headers: {
@@ -84,8 +89,8 @@ export default { //class HomePage extends Vue {
       },
       body: JSON.stringify({
         userID:"123",
-        auctionID:"565656",
-        price:200
+        auctionID: id,
+        price: price
       })
     })
     .then(res => {
@@ -95,6 +100,7 @@ export default { //class HomePage extends Vue {
     }
   }
 }
+
 
 </script>
 
