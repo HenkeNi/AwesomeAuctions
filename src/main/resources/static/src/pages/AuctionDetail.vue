@@ -27,7 +27,7 @@
         </div>
         </div>
         <div class="row">
-      <div class="col s12"><a href="" class="btn">PLACE BUD</a></div>
+      <div class="col s12"><a href="" class="btn" @click="placeBid">PLACE BUD</a></div>
         </div>
     </div>
       
@@ -35,7 +35,12 @@
     <div class="row">
       <div class="col s8">DESCRIPTION
         <div class="row">
-      <div class="col s12">Beatiful shoe</div>
+      <div class="col s12">{{ description }}</div>
+      <div v-for="auction in allAuctionDetail" :key="auction.id">
+      <h2>{{auction.productName}}</h2>
+      <h2>{{auction.description}}</h2>
+    </div>
+    <div>{{ allAuctionDetail[1].productName }}</div>
     </div>
       </div>
     </div>
@@ -57,34 +62,54 @@ import M from 'materialize-css'
 export default { //class HomePage extends Vue {
   data() {
     return {
-      title: 'Details about auction'
+      title: 'Details about auction',
+      description: 'lorem ipsum dolor',
+      allAuctionDetail: 
+        // productName:"",
+        // description:"",
+        // imageURL:"",
+        // startBid: 0,
+        // endDate: 0
+        []
+      
     };
   },
   mounted () {
-    M.AutoInit(),
+    M.AutoInit()
     
-    fetch('http://localhost:5000/api/v1/auction'/*, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        productName:"Window",
-        description:"Fine window",
-        imageURL:"http://window",
-        startBid:299,
-        endDate:161616
+    
+  },
+  created() {
+    this.fetchAuctions()
+    console.log(this.auctionDetail);
+  },
+  methods: {
+    async fetchAuctions() {
+
+      fetch('http://localhost:5000/api/v1/auction')
+      .then(res => res.json())
+      .then(data => this.allAuctionDetail = data)
+      .then(console.log(this.auctionDetail))
+},
+async placeBid(e){
+  e.preventDefault();
+  console.log('in place bid');
+  fetch('http://localhost:5000/api/v1/bid', {
+    method: 'POST',
+    headers: { "Content-Type": "application/json" },
+body : JSON.stringify({ 
+  userID: 'test', 
+  auctionID: '123', 
+  price: 50
+  })
+    
+  })
+      .then(res => {
+        console.log(res);
       })
-    }*/)
-    .then(res => {
-      return res.json()
-    })
-    .then(data => console.log(data))
-    //.catch(error => console.log('ERROR'))
-  
+  }
   }
 }
-
 </script>
 
 <style>
