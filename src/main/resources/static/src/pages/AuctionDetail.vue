@@ -29,7 +29,7 @@
         </div>
         </div>
         <div class="row">
-      <div class="col s12"><a href="" class="btn">PLACE BUD</a></div>
+      <div class="col s12"><a href="" class="btn" @click="placeBid">PLACE BUD</a></div>
         </div>
     </div>
       
@@ -67,25 +67,32 @@ export default { //class HomePage extends Vue {
   mounted () {
     M.AutoInit(),
     
-    fetch('http://localhost:5000/api/v1/auction'/*, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        productName:"Window",
-        description:"Fine window",
-        imageURL:"http://window",
-        startBid:299,
-        endDate:161616
-      })
-    }*/)
+    fetch('http://localhost:5000/api/v1/auction')
     .then(res => {
       return res.json()
     })
     .then(data => console.log(data))
     //.catch(error => console.log('ERROR'))
   
+  },
+  methods: {
+    async placeBid(){
+      fetch('http://localhost:5000/api/v1/bid', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userID:"123",
+        auctionID:"565656",
+        price:200
+      })
+    })
+    .then(res => {
+      return res.json()
+    })
+    .then(data => console.log(data))
+    }
   }
 }
 
