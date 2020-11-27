@@ -1,5 +1,6 @@
 <template>
   <div class="home-page">
+      <input v-model="search" type="text" placeholder="Search Auction..." />
       <AuctionList />
   </div>
 </template>
@@ -12,10 +13,16 @@ export default {
   data() {
     return {
       title: 'Hello',
+      search: "",
     };
   },
   components: {
     AuctionList
+  },
+  watch: {
+    search() {
+      this.$store.commit('setAuctionSearched', this.search);      
+    }
   },
 }
 </script>
