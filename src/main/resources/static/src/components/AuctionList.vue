@@ -1,9 +1,10 @@
 <template>
   <div>
     <h3>Current Auctions:</h3>
+    <h4>{{ searchedAuction }}</h4>
     <div class="article-list">
       <AuctionListItem
-      v-for="auction in auctionsData"
+      v-for="auction in auctionsData" 
       :key = "auction.id"
       :auction="auction"
      />
@@ -13,6 +14,7 @@
 
 
 <script>
+// TODO: auction in (searchedAuction != [](empty) ? searchedAuction : auctionsData) 
 
 import AuctionListItem from './AuctionListItem';
 
@@ -23,6 +25,7 @@ export default {
   },
    data() {
     return {
+      searchedAuction: [],
       //auctions: this.$store.getters.auctionList,
     };
   },
@@ -30,8 +33,24 @@ export default {
   computed: {
     auctionsData() {
       return this.$store.getters.auctionList;
+    },
+    auctionSearched() {
+      return this.$store.getters.auctionSearched;
     }
   },
+  watch: {
+    auctionSearched() {
+
+        // TODO: FIlter array
+      for (let auction of this.auctionsData) {
+        if (auction.productName.includes(auctionSearched)) {
+          console.log("VICTORY!");
+        }
+      }
+
+      console.log("IS CHANGIE");
+    }
+  }
 
 
  
