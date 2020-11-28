@@ -13,6 +13,9 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#contact">Contact Us</a></li>
         <li><a href="#logIn/Register">Logg In/Register</a></li>
+        <li v-if="!isLoggedin">
+            <a href="#signup" class="modal-trigger">SKAPA KONTO</a>
+        </li>
       </ul>
       </div>
 
@@ -21,11 +24,14 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#contact">Contact Us</a></li>
         <li><a href="#logIn/Register">Logg In/Register</a></li>
+        
 </ul>
     </div>
-
+          
                
-
+        <div class="modal grey lighten-4" id="signin">
+          <Signup v-on:close="closeModal($event)" />
+        </div>
        </div>
     </nav>
 
@@ -34,8 +40,26 @@
   
  <script>
 import M from 'materialize-css'
+import Signup from '../components/users/Signup'
 
 export default {
+    name: 'header',
+    components: {
+      Signup
+    },
+    data() {
+      return {
+        isLoggedin: false,
+      }
+    },
+    methods: {
+      closeSignup() {
+      if (this.isLoggedin) {
+        let modal = document.querySelector("#signup");
+        this.$M.Modal.getInstance(modal).close();
+      }
+    }
+    },
     mounted () {
     M.AutoInit()
 },
