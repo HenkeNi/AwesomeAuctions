@@ -21,7 +21,9 @@
             </div>
             <div class="col s4">ENDS</div>
             {{ this.$route.params.auction.endDate }}
-            <div class="col s4">BID</div>
+            <div class="col s4">BID
+              <h3>Current Bid: {{ (this.$route.params.auction.currentBid == undefined ? "Not Available" : this.$route.params.auction.currentBid) }}</h3>
+            </div>
           </div>
           <div class="row">
             <div class="col s12">LAY BID</div>
@@ -66,7 +68,9 @@ export default {
       title: "Details about auction"
     };
   },
-
+  created() {
+    console.log(this.$route.params.auction.currentBid);
+  },
   mounted() {
     M.AutoInit(),
       fetch(
