@@ -4,6 +4,7 @@
     <div class="item-desc">
       <h2>{{ auction.productName }}</h2>
       <h4>Starting bid: {{ auction.startBid }}</h4>
+      <h5>Current Bid: {{ currentBid }}</h5>
       <h4>Ends at: {{ auction.endDate }}</h4>
     </div>
    </div>
@@ -15,14 +16,23 @@ export default {
   props: ['auction'],
   data() {
     return {
-
+      currentBid: 0,
     };
   },
   methods: {
     goToAuctionDetails(auction) {
       this.$router.push({ name: 'AuctionDetail', params: {auction: auction} });
       //this.$router.push(`detail/${auction}`);
-    }
+    },
+    async fetchCurrentBid() {
+      //let a = "asuia33";
+      let res = await fetch(`http://localhost:5000/api/v1/bid/auctionId:${this.auction.id}`);
+      let json = await res.json();
+      console.log(json);
+    },
+  },
+  created() {
+    this.fetchCurrentBid();
   }
 }
 </script>
