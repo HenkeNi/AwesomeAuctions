@@ -1,39 +1,26 @@
 
 <template>
-<nav>
-    <div class="navbar-wrapper"  >
-    <div class="container">
-      <a href="" class="brand-logo">AwesomeAuction</a>
-      <a href="" class="sidenav-trigger" data-target="mobile-menue">
-        <i class="material-icons">menu</i>
-              </a>
-      <div class="nav-info">
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#about">About</a></li>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#contact">Contact Us</a></li>
-        <li><a href="#logIn/Register">Logg In/Register</a></li>
-        <li v-if="!isLoggedin">
-            <a href="#signup" class="modal-trigger">SKAPA KONTO</a>
-        </li>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Awesome Auction</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
       </ul>
-      </div>
-
-<ul class="sidenav gray lighten-2" id="mobile-menue">
-  <li><a href="#about">About</a></li>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#contact">Contact Us</a></li>
-        <li><a href="#logIn/Register">Logg In/Register</a></li>
-        
-</ul>
     </div>
-          
-               
-        <div class="modal grey lighten-4" id="signin">
-          <Signup v-on:close="closeModal($event)" />
-        </div>
-       </div>
-    </nav>
+  </nav>
+
+       <!-- Modal Structure -->
+  <!-- <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div> -->
+
 
 
 </template>
@@ -61,7 +48,9 @@ export default {
     }
     },
     mounted () {
-    M.AutoInit()
+    M.AutoInit();
+    let modal = document.querySelectorAll(".modal");
+    this.$M.Modal.init(modal);
 },
 }
 
