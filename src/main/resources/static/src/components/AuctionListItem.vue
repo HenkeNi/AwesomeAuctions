@@ -25,10 +25,13 @@ export default {
       //this.$router.push(`detail/${auction}`);
     },
     async fetchCurrentBid() {
-      //let a = "asuia33";
+      //let testBid = "asuia33";
+      //let res = await fetch(`http://localhost:5000/api/v1/bid/auctionId:${testBid}`);
       let res = await fetch(`http://localhost:5000/api/v1/bid/auctionId:${this.auction.id}`);
       let json = await res.json();
-      console.log(json);
+
+      if (json.error === "Not Found") { this.currentBid = "Not Available"; return; }
+      else { this.currentBid = json.price; }
     },
   },
   created() {
