@@ -1,25 +1,50 @@
 
 <template>
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Awesome Auction</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">JavaScript</a></li>
+ <!-- <nav>   
+    <div class="nav-wrapper blue">
+
+      <div class="container">
+        <a href="#" class="left">Awesome Auction</a>
+        <a href="" class="sidenav-trigger" data-target="mobile-menu"><i class="material-icons">menu</i></a>
+      <ul class="right hide-om-med-and-down">
+       <li><a href="#">About us</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Logg in</a></li>
+        <li><a href="#"> Register</a></li>
+        </ul>
+      </div>
+      <div>
+    <ul class="sidenav gray lighten-2" id="mobile-menu">
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Logg in/ Register</a></li>
       </ul>
     </div>
-  </nav>
-
-       <!-- Modal Structure -->
-  <!-- <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div> -->
+  </nav>  -->
+
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">Awesome Auction</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">Javascript</a></li>
+        <li><a href="mobile.html">Mobile</a></li>
+      </ul>
+    </div>
+
+    <ul class="sidenav" id="mobile-demo">
+    <li><a href="sass.html">Sass</a></li>
+    <li><a href="badges.html">Components</a></li>
+    <li><a href="collapsible.html">Javascript</a></li>
+    <li><a href="mobile.html">Mobile</a></li>
+  </ul>
+  </nav>
+  
+
+      
 
 
 
@@ -51,6 +76,7 @@ export default {
     M.AutoInit();
     let modal = document.querySelectorAll(".modal");
     this.$M.Modal.init(modal);
+  
 },
 }
 
@@ -66,12 +92,20 @@ background-color: red;
   
 
 }
+
 .nav-info{
 
    align-items: center;
    justify-content: space-between;
   align-content: space-between;
    display: flex;
+}
+@media screen and (min-width: 0px) and (max-width: 400px) {
+  #my-content { display: block; }  /* show it on small screens */
+}
+
+@media screen and (min-width: 401px) and (max-width: 1024px) {
+  #my-content { display: none; }   /* hide it elsewhere */
 }
 
 </style>
