@@ -34,9 +34,9 @@ public class UserController {
     public ResponseEntity<User> findUserById(@PathVariable String id) {
         return ResponseEntity.ok(userService.findById(id));
     }
-
-    @Secured("ROLE_ADMIN")
+    
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<User> saveUser(@RequestBody User user) {
         var savedUser = userService.save(user);
         return ResponseEntity.created(URI.create("/api/v1/user/" + savedUser.getId())).body(savedUser);
