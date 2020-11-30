@@ -30,7 +30,7 @@
         </div>
         </div>
         <div class="row">
-      <div class="col s12"><a href="" class="btn" @click.prevent="placeBid(price, this.$route.params.auction.id)">PLACE BUD</a></div>
+      <div class="col s12"><a href="" class="btn" @click.prevent="placeBid(price)">PLACE BUD</a></div>
         </div>
     </div>
       
@@ -79,9 +79,9 @@ export default { //class HomePage extends Vue {
   
   },
   methods: {
-    async placeBid(price, id){
+    async placeBid(price){
       
-      console.log(price, id);
+      console.log(price);
       fetch('http://localhost:5000/api/v1/bid', {
       method: 'POST',
       headers: {
@@ -89,7 +89,7 @@ export default { //class HomePage extends Vue {
       },
       body: JSON.stringify({
         userID:"123",
-        auctionID: id,
+        auctionID: this.$route.params.auction.id,
         price: price
       })
     })
