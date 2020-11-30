@@ -4,10 +4,15 @@
     <h4>{{ searchedAuction }}</h4>
     <div class="article-list">
       <AuctionListItem
+        v-for="auction in (searchedAuctions == undefined || searchedAuctions.length == 0 ? auctionsData : searchedAuctions)" 
+        :key = "auction.id"
+        :auction="auction"
+      />
+      <!-- <AuctionListItem
       v-for="auction in auctionsData" 
       :key = "auction.id"
       :auction="auction"
-     />
+     /> -->
     </div>
   </div>
 </template>
@@ -25,7 +30,7 @@ export default {
   },
    data() {
     return {
-      searchedAuction: [],
+      searchedAuctions: [],
       //auctions: this.$store.getters.auctionList,
     };
   },
@@ -40,15 +45,27 @@ export default {
   },
   watch: {
     auctionSearched() {
+      
+      let result = this.auctionsData.filter(auction => auction.productName.toLowerCase().includes(this.auctionSearched.toLowerCase()));
 
-        // TODO: FIlter array
-      for (let auction of this.auctionsData) {
-        if (auction.productName.includes(auctionSearched)) {
-          console.log("VICTORY!");
-        }
-      }
+      // Sort result
+      // if (result !== undefined || result.length !== 0) {
+      //   result.sort(function(a) { if (a === this.auctionSearched) return 1; else return -1; }); 
+      // }
 
-      console.log("IS CHANGIE");
+      this.searchedAuctions = result;
+
+
+      //console.log("RESULT", result);
+
+
+      //   // TODO: FIlter array
+      // for (let auction of this.auctionsData) {
+      //   if (auction.productName.includes(this.auctionSearched)) {
+      //     console.log("VICTORY!");
+      //   }
+      // }
+
     }
   }
 
