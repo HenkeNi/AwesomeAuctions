@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -35,6 +36,7 @@ public class AuctionController {
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @Secured("ROLE_USER")
     public ResponseEntity<Auction> saveAuction(@RequestBody Auction auction) {
         var savedAuction = auctionService.save(auction);
         return ResponseEntity.created(URI.create("/api/v1/auction/" + savedAuction.getId())).body(savedAuction);
@@ -42,6 +44,7 @@ public class AuctionController {
 
 
     @PutMapping("/{id}")
+    @Secured({"ROLE_USER", "ROLE_EDITOR", "ROLE_ADMIN"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateAuction(@PathVariable String id, @RequestBody Auction auction) {
         auctionService.update(id, auction);
@@ -49,6 +52,7 @@ public class AuctionController {
 
 
     @DeleteMapping("/{id}")
+    @Secured({"ROLE_USER", "ROLE_EDITOR", "ROLE_ADMIN"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteAuction(@PathVariable String id) {
         auctionService.delete(id);
