@@ -1,63 +1,80 @@
 
 <template>
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo center">Awesome Auction</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Home</a></li>
-        <li><a href="badges.html">About</a></li>
-        <li><a class="modal-trigger" href="#login">Log In</a>
+ <!-- <nav>   
+    <div class="nav-wrapper blue">
 
-  <!-- Modal Structure -->
-  <div id="login" class="modal">
-    <div class="container-fluid">
-      <div class="row login">
-        <div class="col s12 m8 offset-m2">
-          <div class="center text-darken">
-            <h4>Log in</h4>
-            <!-- <hr class="hr-style"> -->
-            <form @submit.prevent="login">
-              <div class="input-field">
-                <input type="email" id="email" v-model="email" />
-                <label for="email">E-mail</label>
-              </div>
-              <div class="input-field">
-                <input type="password" id="password" v-model="password" />
-                <label for="password">Password</label>
-              </div>
-              <button
-                type="submit"
-                class="btn btn-small waves-effect"
-              >Log in</button>
-            </form>
-          </div>
-        </div>
+      <div class="container">
+        <a href="#" class="left">Awesome Auction</a>
+        <a href="" class="sidenav-trigger" data-target="mobile-menu"><i class="material-icons">menu</i></a>
+      <ul class="right hide-om-med-and-down">
+       <li><a href="#">About us</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Logg in</a></li>
+        <li><a href="#"> Register</a></li>
+        </ul>
       </div>
-    </div>
-  </div>
-
-        <li><a href="collapsible.html">Register</a></li>
+      <div>
+    <ul class="sidenav gray lighten-2" id="mobile-menu">
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Logg in/ Register</a></li>
       </ul>
     </div>
+    </div>
+  </nav>  -->
+
+  <nav>
+    
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Awesome Auction</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+        <li v-if="!isLoggedin">
+          <a href="#signup" class="modal-trigger">Skapa Konto</a>
+        </li>
+      </ul>
+      
+    </div>
+    <ul class="sidenav" id="mobile-demo">
+    <li><a href="sass.html">Sass</a></li>
+    <li><a href="badges.html">Components</a></li>
+    <li><a href="collapsible.html">Javascript</a></li>
+    <li><a href="mobile.html">Mobile</a></li>
+    <li v-if="!isLoggedin">
+      <a href="#signup" class="modal-trigger">Skapa Konto</a>
+    </li>
+  </ul>
+  <div class="modal grey lighten-4" id="signup">
+    <Signup v-on:close="closeModal($event)" />
+  </div>
   </nav>
-
-
-
-
 </template>
   
 <script>
 import M from 'materialize-css'
-export default {
+import Signup from '../components/users/Signup'
 
+export default {
+    name: 'header',
+    components: {
+      Signup
+    },
   data() {
     return {
       email: "",
       password: "",
-    
+      isLoggedin: false,
     }
   },
   methods: {
+    closeSignup() {
+      if (this.isLoggedin) {
+        let modal = document.querySelector("#signup");
+        this.$M.Modal.getInstance(modal).close();
+      }
+    },
     async login() {
   
 
@@ -83,7 +100,11 @@ export default {
     
     mounted () {
     M.AutoInit();
-    }
+    let modal = document.querySelectorAll(".modal");
+    this.$M.Modal.init(modal);
+  
+},
+    
 }
 
 </script>
@@ -98,12 +119,20 @@ background-color: red;
   
 
 }
+
 .nav-info{
 
    align-items: center;
    justify-content: space-between;
   align-content: space-between;
    display: flex;
+}
+@media screen and (min-width: 0px) and (max-width: 400px) {
+  #my-content { display: block; }  /* show it on small screens */
+}
+
+@media screen and (min-width: 401px) and (max-width: 1024px) {
+  #my-content { display: none; }   /* hide it elsewhere */
 }
 
 </style>

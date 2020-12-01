@@ -73,9 +73,17 @@ public class UserService {
         userRepo.deleteById(id);
     }
 
+    private Boolean sameUserOrAdminOrEditor (User currentUser, String id) {
+        return (currentUser.getId().equals(id) || currentUser.getRoles().contains("ADMIN") || currentUser.getRoles().contains("EDITOR"));
+    }
     public User findByEmail(String email) {
         return userRepo.findByEmail(email);
     }
 
-
+    public User findCurrentUser() {
+        // the login session is stored between page reloads,
+        // and we can access the current authenticated user with this
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        return userRepo.findByEmail(email);
+    }
 }
