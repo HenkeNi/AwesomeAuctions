@@ -33,7 +33,7 @@ public class BidController {
     }
 
     @GetMapping("/auctionId:{auctionId}")
-    public ResponseEntity<Bid> findIdByAuctionId(@PathVariable String auctionId) {
+    public ResponseEntity<List<Bid>> findIdByAuctionId(@PathVariable String auctionId) {
         System.out.println("Searching by auctionID");
         return ResponseEntity.ok(bidService.findByAuctionID(auctionId));
     }

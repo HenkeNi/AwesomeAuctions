@@ -35,9 +35,12 @@ public class BidService {
         return bidRepo.findByUserID(id);
     }
     */
-    public Bid findByAuctionID(String id) {
-        return bidRepo.findByAuctionID(id).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.NOT_FOUND, "Bid not found!"));
+
+    //public Bid findByAuctionID(String id) {
+    public List<Bid> findByAuctionID(String id) {
+        return bidRepo.findByAuctionID(id);
+        //return bidRepo.findByAuctionID(id).orElseThrow(() ->
+        //        new ResponseStatusException(HttpStatus.NOT_FOUND, "Bid not found!"));
     }
 
 

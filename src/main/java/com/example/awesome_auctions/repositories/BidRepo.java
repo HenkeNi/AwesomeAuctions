@@ -14,7 +14,9 @@ public interface BidRepo extends MongoRepository<Bid, String> {
     //List<Bid> findByUserID(String id);
     //List<Bid> findByAuctionID(String id);
 
-    Optional<Bid> findByAuctionID(String id);
+    //Optional<Bid> findByAuctionID(String id);
+
+    List<Bid> findByAuctionID(String auctionId);
 
 
 }
