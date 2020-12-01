@@ -1,21 +1,23 @@
 
 <template>
 
-
  <div class="row">
     <div class="col s12 m6">
-      <div class="card blue-grey darken-1">
+      <div class=" card blue darken-1 ">
         <div class="card-content white-text">
           <span class="card-title">About us</span>
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
+          <h2>Here you can buy what you need and sell what you dont't need. You can suggest higher price also.</h2>
         </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
-          <a href="#">This is a link</a>
+        <div class="card-action red-text">
+          <h2>Contact Us</h2>
+          <ul>
+         <li> <a href="#">Send Mail</a></li>
+          <li><a href="#">Ring Us</a></li>
+          </ul>
         </div>
       </div>
-    </div>
+      </div>
+     
   </div>
   
 
