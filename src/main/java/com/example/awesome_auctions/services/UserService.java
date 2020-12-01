@@ -5,6 +5,7 @@ import com.example.awesome_auctions.entities.User;
 import com.example.awesome_auctions.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -67,5 +68,15 @@ public class UserService {
 
     private Boolean sameUserOrAdminOrEditor (User currentUser, String id) {
         return (currentUser.getId().equals(id) || currentUser.getRoles().contains("ADMIN") || currentUser.getRoles().contains("EDITOR"));
+    }
+    public User findByEmail(String email) {
+        return userRepo.findByEmail(email);
+    }
+
+    public User findCurrentUser() {
+        // the login session is stored between page reloads,
+        // and we can access the current authenticated user with this
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        return userRepo.findByEmail(email);
     }
 }

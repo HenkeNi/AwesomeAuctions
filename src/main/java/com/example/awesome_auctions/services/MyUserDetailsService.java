@@ -1,41 +1,50 @@
 package com.example.awesome_auctions.services;
 
 import com.example.awesome_auctions.entities.User;
+import com.example.awesome_auctions.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import java.util.Collection;
-import java.util.stream.Collectors;
+import javax.annotation.PostConstruct;
 
-@Service
+@Configuration
 public class MyUserDetailsService implements UserDetailsService {
 
+    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    public BCryptPasswordEncoder getEncoder() { return encoder; }
+
     @Autowired
-    private UserService userService;
+    private UserRepo userRepo;
 
     @Override
-    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
-        User user = userService.findByName(name);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userRepo.findByEmail(email);
         if (user == null) {
-            throw new UsernameNotFoundException("Name " + name + " not found");
+            throw new UsernameNotFoundException("User not found by name: " + email);
         }
-        return new org.springframework.security.core.userdetails.User(user.getName(),
-                user.getPassword(), getGrantedAuthorities(user));
+        return toUserDetails(user);
     }
 
-    private Collection<GrantedAuthority> getGrantedAuthorities(User user) {
-        return user.getRoles().stream()
-                .map(role -> new SimpleGrantedAuthority("ROLE_" + role))
-                .collect(Collectors.toList());
+    public User addUser(String email, String password){
+        User user = new User(email, encoder.encode(password));
+        try {
+            return userRepo.save(user);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null;
     }
 
-    public String getCurrentUser() {
-        return SecurityContextHolder.getContext().getAuthentication().getName();
+    private UserDetails toUserDetails(User user) {
+        // If you have a User entity you have to
+        // use the userdetails User for this to work
+        return org.springframework.security.core.userdetails.User
+                .withUsername(user.getEmail())
+                .password(user.getPassword())
+                .roles("USER").build();
     }
 }

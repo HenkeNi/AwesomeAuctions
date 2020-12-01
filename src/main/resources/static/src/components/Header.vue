@@ -26,16 +26,11 @@
   <nav>
     
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">Awesome Auction</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
+      <a href="#" class="brand-logo">Awesome Auction</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="sass.html">Sass</a></li>
         <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
-        <li v-if="!isLoggedin">
-            <a href="#signup" class="modal-trigger">Skapa Konto</a>
-        </li>
+        <li><a href="collapsible.html">JavaScript</a></li>
       </ul>
       
     </div>
@@ -54,9 +49,10 @@
   </nav>
 </template>
   
- <script>
+<script>
 import M from 'materialize-css'
 import Signup from '../components/users/Signup'
+export default {
 
 export default {
     name: 'header',
@@ -76,12 +72,44 @@ export default {
       }
     }
     },
+  data() {
+    return {
+      email: "",
+      password: "",
+    
+    }
+  },
+  methods: {
+    async login() {
+  
+
+  /*const credentials = 'username=' +
+    encodeURIComponent(username)
+    + '&password=' +
+    encodeURIComponent(password)*/
+
+  let response = await fetch("http://localhost:5000/api/v1/user/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({email: this.email, password: this.password})
+  });
+
+  if(response.url.includes('error')) {
+    console.log('Wrong username/password');
+  } else {
+    console.log('u logged in');
+    console.log(await response.json());
+  }
+}
+  },
+    
     mounted () {
     M.AutoInit();
     let modal = document.querySelectorAll(".modal");
     this.$M.Modal.init(modal);
   
 },
+    }
 }
 
 </script>

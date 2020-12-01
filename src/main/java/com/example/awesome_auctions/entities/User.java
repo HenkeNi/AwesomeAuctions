@@ -78,4 +78,9 @@ public class User {
     public void setRoles(List<String> roles) {
         this.roles = roles;
     }
+
+    public User(String email, String password   ) {
+        this.email = email;
+        this.password = password;
+    }
 }
