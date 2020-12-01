@@ -1,9 +1,8 @@
 <template>
   <div id="app">
     <Header/>
+    <div>AWESOME AUCTIONS</div>
     <router-view />
-    <div>
-  </div>
   </div>
 </template>
 
@@ -12,11 +11,13 @@ import Header from './components/Header.vue'
 
 export default {
   name: 'app',
+  created() {
+    this.$store.dispatch('fetchAuctions');
+  },
   components: {
     Header
   }
 }
-
 
 </script>
 
