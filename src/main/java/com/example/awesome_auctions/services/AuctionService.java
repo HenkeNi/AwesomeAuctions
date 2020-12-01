@@ -50,7 +50,7 @@ public class AuctionService {
 
 
     public void update(String id, Auction auction) {
-        var currentUser = findByName(userService.getCurrentUser());
+        var currentUser = userService.getCurrentUser();
         if (!auctionRepo.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Auction not found");
         }

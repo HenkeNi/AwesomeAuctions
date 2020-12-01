@@ -57,7 +57,7 @@ public class UserService {
     }
 
     public void update(String id, User user) {
-        var currentUser = findByName(getCurrentUser());
+        var currentUser = this.getCurrentUser();
         if (!userRepo.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
         }
@@ -70,7 +70,7 @@ public class UserService {
     }
 
     private Boolean sameUserOrAdminOrEditor (User currentUser, String id) {
-        return (currentUser.getId().equals(id)||currentUser.getRoles().contains("ADMIN")||currentUser.getRoles().contains("EDITOR");
+        return (currentUser.getId().equals(id)||currentUser.getRoles().contains("ADMIN")||currentUser.getRoles().contains("EDITOR"));
     }
 
     public void delete(String id) {
