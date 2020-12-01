@@ -1,11 +1,14 @@
 <template>
   <div id="app">
-    <div>HELLO WORLD</div>
-    <router-view />
+    <Header/>
+    <img alt="Vue logo" src="./assets/logo.png">
+    <div>
+  </div>
   </div>
 </template>
 
 <script>
+import Header from './components/Header.vue'
 
 // import Vue from 'vue'
 // import { Component } from "vue-property-decorator";
@@ -20,7 +23,7 @@
 export default {
   name: 'app',
   components: {
-    
+    Header
   }
 }
 
@@ -35,6 +38,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>

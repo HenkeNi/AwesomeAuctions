@@ -1,4 +1,4 @@
-package com.example.awesome_auctions.config;
+package com.example.awesome_auctions.configs;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
@@ -26,3 +26,4 @@ public class AuthenticationEntryPoint extends BasicAuthenticationEntryPoint {
         super.afterPropertiesSet();
     }
 }
+

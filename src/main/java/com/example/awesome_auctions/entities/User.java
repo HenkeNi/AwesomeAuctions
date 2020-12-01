@@ -63,12 +63,10 @@ public class User {
         this.email = email;
     }
 
-    @JsonIgnore
     public String getPassword() {
         return password;
     }
 
-    @JsonProperty
     public void setPassword(String password) {
         this.password = password;
     }
@@ -79,5 +77,10 @@ public class User {
 
     public void setRoles(List<String> roles) {
         this.roles = roles;
+    }
+
+    public User(String email, String password   ) {
+        this.email = email;
+        this.password = password;
     }
 }
