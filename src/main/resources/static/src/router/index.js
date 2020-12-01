@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomePage from '../pages/HomePage'
 import AuctionDetail from '../pages/AuctionDetail'
+import Profile from '../pages/Profile'
 
 
 Vue.use(VueRouter)
@@ -17,6 +18,11 @@ const routes = [
     name: 'AuctionDetail',
     component: AuctionDetail,
     props: true,
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
   },
   // {
   //   path: "/auctionDetail/:auction",
