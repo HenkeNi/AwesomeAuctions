@@ -10,13 +10,26 @@
 <script>
 import Header from './components/Header.vue'
 
+// import Vue from 'vue'
+// import { Component } from "vue-property-decorator";
+
+// @Component({
+//   components: {
+//     // NavBar
+//   }
+// })
+// export default class App extends Vue {}
+
 export default {
   name: 'app',
   components: {
     Header
   }
 }
+
+
 </script>
+
 
 <style>
 #app {
