@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div class="containerAuction">
   <div class="auction">
       <h1>Create new auction</h1>
       <p class="test">Product name</p>

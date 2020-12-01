@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header/>
-    <img alt="Vue logo" src="./assets/logo.png">
+    <router-view />
     <div>
   </div>
   </div>
@@ -9,16 +9,6 @@
 
 <script>
 import Header from './components/Header.vue'
-
-// import Vue from 'vue'
-// import { Component } from "vue-property-decorator";
-
-// @Component({
-//   components: {
-//     // NavBar
-//   }
-// })
-// export default class App extends Vue {}
 
 export default {
   name: 'app',
