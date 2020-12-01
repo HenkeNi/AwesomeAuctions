@@ -5,7 +5,7 @@
       <h2>{{ auction.productName }}</h2>
       <h4>Starting bid: {{ auction.startBid }}</h4>
       <!-- <h5>Current Bid: {{ (auction.currentBid == undefined ? "Not Available" : auction.currentBid) }}</h5> -->
-            <h5>Current Bid: {{ (currentBid == undefined ? "Not Available" : currentBid) }}</h5>
+            <h5>Current Bid: {{ (currentBid == undefined || currentBid === 0 ? "Not Available" : currentBid) }}</h5>
       <h4>Ends at: {{ auction.endDate }}</h4>
     </div>
    </div>
@@ -31,8 +31,12 @@ export default {
       let res = await fetch(`http://localhost:5000/api/v1/bid/auctionId:${this.auction.id}`);
       let json = await res.json();
 
-      this.currentBid = json.price;
-      this.auction.currentBid = json.price;
+      if (json.length != 0) {
+        this.showHighestBid(json);
+      }
+
+      //this.currentBid = json.price;
+      //this.auction.currentBid = json.price;
       
       //console.log("BID: ", this.auction.currentBid == undefined);
       //if (json.status === 404) { return; }
@@ -41,6 +45,17 @@ export default {
       //else { this.auction.currentBid = json.price; }
       
       //else { this.currentBid = json.price; }
+    },
+    showHighestBid(bids) {
+      let highestBid = 0;
+
+      for (let bid of bids) {
+        if (highestBid < bid.price) {
+          highestBid = bid.price;
+        }
+      }
+      this.currentBid = highestBid;
+      this.auction.currentBid = highestBid;
     },
   },
   created() {
