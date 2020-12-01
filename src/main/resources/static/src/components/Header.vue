@@ -18,7 +18,7 @@
             <!-- <hr class="hr-style"> -->
             <form @submit.prevent="login">
               <div class="input-field">
-                <input type="email" id="email" v-model="user" />
+                <input type="email" id="email" v-model="email" />
                 <label for="email">E-mail</label>
               </div>
               <div class="input-field">
@@ -59,25 +59,24 @@ export default {
   },
   methods: {
     async login() {
-  let username = 'user'
-  let password = 'password'
+  
 
-  const credentials = 'username=' +
+  /*const credentials = 'username=' +
     encodeURIComponent(username)
     + '&password=' +
-    encodeURIComponent(password)
+    encodeURIComponent(password)*/
 
-  let response = await fetch("http://localhost:5000/api/v1/user", {
+  let response = await fetch("http://localhost:5000/api/v1/user/login", {
     method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: credentials
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({email: this.email, password: this.password})
   });
 
   if(response.url.includes('error')) {
     console.log('Wrong username/password');
   } else {
     console.log('u logged in');
-    console.log(response.body.email);
+    console.log(await response.json());
   }
 }
   },
