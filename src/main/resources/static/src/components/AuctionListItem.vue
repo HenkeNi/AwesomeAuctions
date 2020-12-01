@@ -34,17 +34,6 @@ export default {
       if (json.length != 0) {
         this.showHighestBid(json);
       }
-
-      //this.currentBid = json.price;
-      //this.auction.currentBid = json.price;
-      
-      //console.log("BID: ", this.auction.currentBid == undefined);
-      //if (json.status === 404) { return; }
-      
-      //if (json.status === 404) { this.auction.currentBid = "Not Available"; }
-      //else { this.auction.currentBid = json.price; }
-      
-      //else { this.currentBid = json.price; }
     },
     showHighestBid(bids) {
       let highestBid = 0;

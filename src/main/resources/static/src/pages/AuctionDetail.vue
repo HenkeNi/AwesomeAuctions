@@ -1,14 +1,35 @@
 <template>
-  <div class="home-page">
-    <div class="container">
+  <div class="details-page">
+    <h4>{{ this.$route.params.auction.productName }}</h4>
+    <div class="main-container">
+      <div class="img-container">
+        <img src="./skor.jpg" />
+      </div>
+      <div class="description">
+        <h5>Description</h5>
+        <p>{{ this.$route.params.auction.description }}</p>
+      </div>
+    </div>
+    <div class="bottom-container">
+        <h6>Current Bid: {{ this.$route.params.auction.currentBid }}</h6>
+        <h6 class="expire">Expires at: {{ this.$route.params.auction.endDate }}</h6>
+    </div>
+    <div class="bid-form">
+      <div class="input-field col s12">
+              <input placeholder="Input bid" id="first_name" type="text" class="validate" />
+              <label for="first_name"></label>
+      </div>
+        <a href class="btn">PLACE BUD</a>
+    </div>
+    
+    <!-- <div class="container">
       <div class="row">
-        <h1>{{ this.$route.params.auction.productName }}</h1>
-        <h3>{{ this.$route.params.auction.id }}</h3>
+        <h2>{{ this.$route.params.auction.productName }}</h2>
         <div class="col s8">
-          PICTURE
           <div class="row">
             <div class="col s12">
-              <img src="this.$route.params.auction.imageURL" alt="./skor.jpg" />
+               <img id="auction-img" src="this.$route.params.auction.imageURL" onerror="standby()" /> 
+              <img src="./skor.jpg" />
             </div>
           </div>
         </div>
@@ -49,9 +70,8 @@
           </div>
         </div>
       </div>
-    </div>
-    <div></div>
-  </div>
+    </div> -->
+  </div> 
 </template>
 
 <script>
@@ -68,8 +88,10 @@ export default {
       title: "Details about auction"
     };
   },
-  created() {
-    console.log(this.$route.params.auction.currentBid);
+  methods: {
+    standby() {
+      document.getElementById('auction-img').src = "./skor.jpg"
+    }
   },
   mounted() {
     M.AutoInit(),
@@ -98,8 +120,40 @@ export default {
 </script>
 
 <style>
-.home-page h1 {
+.container {
+  width: 80vw;
+  background-color: pink;
+  margin: auto;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  
+}
+
+.main-container img {
+  padding-right: 20px;
+}
+
+.main-container h5 {
+  margin: 0;
+  padding-left: 20px;
+}
+
+
+.details-page h4 {
   text-align: center;
+  text-decoration: underline;
+}
+
+.bid-form {
+  margin: auto;
+  width: 420px;
+}
+
+.expire {
+  font-size: small;
 }
 
 div {
