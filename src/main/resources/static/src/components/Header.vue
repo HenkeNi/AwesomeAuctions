@@ -31,6 +31,9 @@
         <li><a href="sass.html">Sass</a></li>
         <li><a href="badges.html">Components</a></li>
         <li><a href="collapsible.html">JavaScript</a></li>
+        <li v-if="!isLoggedin">
+          <a href="#signup" class="modal-trigger">Skapa Konto</a>
+        </li>
       </ul>
       
     </div>
@@ -40,7 +43,7 @@
     <li><a href="collapsible.html">Javascript</a></li>
     <li><a href="mobile.html">Mobile</a></li>
     <li v-if="!isLoggedin">
-            <a href="#signup" class="modal-trigger">Skapa Konto</a>
+      <a href="#signup" class="modal-trigger">Skapa Konto</a>
     </li>
   </ul>
   <div class="modal grey lighten-4" id="signup">
@@ -52,34 +55,26 @@
 <script>
 import M from 'materialize-css'
 import Signup from '../components/users/Signup'
-export default {
 
 export default {
     name: 'header',
     components: {
       Signup
     },
-    data() {
-      return {
-        isLoggedin: false,
-      }
-    },
-    methods: {
-      closeSignup() {
-      if (this.isLoggedin) {
-        let modal = document.querySelector("#signup");
-        this.$M.Modal.getInstance(modal).close();
-      }
-    }
-    },
   data() {
     return {
       email: "",
       password: "",
-    
+      isLoggedin: false,
     }
   },
   methods: {
+    closeSignup() {
+      if (this.isLoggedin) {
+        let modal = document.querySelector("#signup");
+        this.$M.Modal.getInstance(modal).close();
+      }
+    },
     async login() {
   
 
@@ -109,7 +104,7 @@ export default {
     this.$M.Modal.init(modal);
   
 },
-    }
+    
 }
 
 </script>
