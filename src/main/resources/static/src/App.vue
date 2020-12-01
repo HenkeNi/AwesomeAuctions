@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <Header/>
-    <Signup/>
     <img alt="Vue logo" src="./assets/logo.png">
     <div>
   </div>
@@ -10,13 +9,10 @@
 
 <script>
 import Header from './components/Header.vue'
-import Signup from './components/users/Signup'
-
 
 export default {
   name: 'app',
   components: {
-    Signup,
     Header
   }
 }

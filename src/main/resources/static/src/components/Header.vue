@@ -24,6 +24,7 @@
   </nav>  -->
 
   <nav>
+    
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo">Awesome Auction</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -32,9 +33,14 @@
         <li><a href="badges.html">Components</a></li>
         <li><a href="collapsible.html">Javascript</a></li>
         <li><a href="mobile.html">Mobile</a></li>
+        <li v-if="!isLoggedin">
+            <a href="#signup" class="modal-trigger">SKAPA KONTO</a>
+        </li>
       </ul>
+      <div class="modal grey lighten-4" id="signup">
+      <Signup v-on:close="closeModal($event)" />
     </div>
-
+    </div>
     <ul class="sidenav" id="mobile-demo">
     <li><a href="sass.html">Sass</a></li>
     <li><a href="badges.html">Components</a></li>
@@ -43,11 +49,6 @@
   </ul>
   </nav>
   
-
-      
-
-
-
 </template>
   
  <script>
