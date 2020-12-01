@@ -30,6 +30,7 @@ public class UserController {
 
 
     @Autowired
+    private
     UserService userService;
 
     @Resource(name="authenticationManager")
@@ -70,7 +71,7 @@ public class UserController {
         HttpSession session = req.getSession(true);
         session.setAttribute(SPRING_SECURITY_CONTEXT_KEY, sc);
 
-        return ResponseEntity.ok(userService.findCurrentUser());
+        return ResponseEntity.ok(userService.getCurrentUser());
     }
 
 

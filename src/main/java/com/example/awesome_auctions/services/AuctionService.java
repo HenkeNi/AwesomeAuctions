@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class AuctionService {
 
     @Autowired
-    private MyUserDetailsService myUserDetailsService;
+    private UserService userService;
 
     @Autowired
     private UserRepo userRepo;
@@ -50,7 +50,7 @@ public class AuctionService {
 
 
     public void update(String id, Auction auction) {
-        var currentUser = findByName(myUserDetailsService.getCurrentUser());
+        var currentUser = findByName(userService.getCurrentUser());
         if (!auctionRepo.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Auction not found");
         }

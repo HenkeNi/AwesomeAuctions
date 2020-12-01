@@ -40,7 +40,7 @@ public class UserService {
     }
 
     public User findByEmail(String email) {
-        return userRepo.findByEmail(email).orElseThrow(RuntimeException::new);
+        return userRepo.findByEmail(email);
     }
 
     public User save(User user) {
@@ -49,8 +49,15 @@ public class UserService {
 
 
 
+    public User getCurrentUser() {
+        // the login session is stored between page reloads,
+        // and we can access the current authenticated user with this
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        return userRepo.findByEmail(email);
+    }
+
     public void update(String id, User user) {
-        User currentUser = findByName(myUserDetailsService.getCurrentUser());
+        var currentUser = findByName(getCurrentUser());
         if (!userRepo.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
         }
@@ -63,7 +70,7 @@ public class UserService {
     }
 
     private Boolean sameUserOrAdminOrEditor (User currentUser, String id) {
-        return (currentUser.getId().equals(id)  currentUser.getRoles().contains("ADMIN")  currentUser.getRoles().contains("EDITOR");
+        return (currentUser.getId().equals(id)||currentUser.getRoles().contains("ADMIN")||currentUser.getRoles().contains("EDITOR");
     }
 
     public void delete(String id) {
@@ -73,17 +80,4 @@ public class UserService {
         userRepo.deleteById(id);
     }
 
-    private Boolean sameUserOrAdminOrEditor (User currentUser, String id) {
-        return (currentUser.getId().equals(id) || currentUser.getRoles().contains("ADMIN") || currentUser.getRoles().contains("EDITOR"));
-    }
-    public User findByEmail(String email) {
-        return userRepo.findByEmail(email);
-    }
-
-    public User findCurrentUser() {
-        // the login session is stored between page reloads,
-        // and we can access the current authenticated user with this
-        String email = SecurityContextHolder.getContext().getAuthentication().getName();
-        return userRepo.findByEmail(email);
-    }
 }
