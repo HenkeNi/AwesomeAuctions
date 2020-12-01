@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomePage from '../pages/HomePage'
+import CreateAuction from '../pages/CreateAuction'
 import AuctionDetail from '../pages/AuctionDetail'
 
 
@@ -24,6 +25,12 @@ const routes = [
   //   component: AuctionDetails,
   //   props: true,
   // }
+
+  {
+    path: '/createAuction',
+    name: 'CreatAuction',
+    component: CreateAuction
+  }
 
 
 

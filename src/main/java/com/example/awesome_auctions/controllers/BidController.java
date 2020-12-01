@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -47,6 +48,7 @@ public class BidController {
 
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @Secured("ROLE_USER")
     public ResponseEntity<Bid> saveBid(@RequestBody Bid bid) {
         var savedBid = bidService.save(bid);
         return ResponseEntity.created(URI.create("/api/v1/bid/" + savedBid.getId())).body(savedBid);
@@ -54,6 +56,7 @@ public class BidController {
 
 
     @PutMapping("/{id}")
+    @Secured("ROLE_USER")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateBid(@PathVariable String id, @RequestBody Bid bid) {
         bidService.update(id, bid);
@@ -61,6 +64,7 @@ public class BidController {
 
 
     @DeleteMapping("/{id}")
+    @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBid(@PathVariable String id) {
         bidService.delete(id);

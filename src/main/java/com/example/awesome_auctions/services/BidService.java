@@ -6,6 +6,7 @@ import com.example.awesome_auctions.repositories.AuctionRepo;
 import com.example.awesome_auctions.repositories.BidRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -50,7 +51,6 @@ public class BidService {
     }
 
 
-
     public void update(String id, Bid bid) {
         if (!bidRepo.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Bid not found");
@@ -58,7 +58,6 @@ public class BidService {
         bid.setId(id);
         bidRepo.save(bid);
     }
-
 
     public void delete(String id) {
         if (!bidRepo.existsById(id)) {
