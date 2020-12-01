@@ -28,18 +28,18 @@
       <a href="#!" class="brand-logo">Awesome Auction</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
+        <li><a href="sass.html">Home</a></li>
+        <li><a href="badges.html">About</a></li>
+        <li><a href="collapsible.html">Log In</a></li>
+        <li><a href="mobile.html">Register</a></li>
       </ul>
     </div>
 
     <ul class="sidenav" id="mobile-demo">
-    <li><a href="sass.html">Sass</a></li>
-    <li><a href="badges.html">Components</a></li>
-    <li><a href="collapsible.html">Javascript</a></li>
-    <li><a href="mobile.html">Mobile</a></li>
+    <li><a href="sass.html">Home</a></li>
+    <li><a href="badges.html">About</a></li>
+    <li><a href="collapsible.html">Log In</a></li>
+    <li><a href="mobile.html">Register</a></li>
   </ul>
   </nav>
   
@@ -58,7 +58,7 @@ export default {
     M.AutoInit();
     let modal = document.querySelectorAll(".modal");
     this.$M.Modal.init(modal);
-  
+
 },
 }
 

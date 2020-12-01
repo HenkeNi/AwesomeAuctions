@@ -11,13 +11,15 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import Header from './components/Header.vue'
+import Kontakt from './components/Kontakt.vue'
 
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
-    Header
+    Header,
+    Kontakt
     
   }
 }
