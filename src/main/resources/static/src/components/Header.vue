@@ -34,21 +34,24 @@
         <li><a href="collapsible.html">Javascript</a></li>
         <li><a href="mobile.html">Mobile</a></li>
         <li v-if="!isLoggedin">
-            <a href="#signup" class="modal-trigger">SKAPA KONTO</a>
+            <a href="#signup" class="modal-trigger">Skapa Konto</a>
         </li>
       </ul>
-      <div class="modal grey lighten-4" id="signup">
-      <Signup v-on:close="closeModal($event)" />
-    </div>
+      
     </div>
     <ul class="sidenav" id="mobile-demo">
     <li><a href="sass.html">Sass</a></li>
     <li><a href="badges.html">Components</a></li>
     <li><a href="collapsible.html">Javascript</a></li>
     <li><a href="mobile.html">Mobile</a></li>
+    <li v-if="!isLoggedin">
+            <a href="#signup" class="modal-trigger">Skapa Konto</a>
+    </li>
   </ul>
+  <div class="modal grey lighten-4" id="signup">
+    <Signup v-on:close="closeModal($event)" />
+  </div>
   </nav>
-  
 </template>
   
  <script>
