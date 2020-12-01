@@ -18,7 +18,7 @@
             <!-- <hr class="hr-style"> -->
             <form @submit.prevent="login">
               <div class="input-field">
-                <input type="email" id="email" v-model="email" />
+                <input type="email" id="email" v-model="user" />
                 <label for="email">E-mail</label>
               </div>
               <div class="input-field">
@@ -58,9 +58,28 @@ export default {
     }
   },
   methods: {
-    login(){
-      console.log('u tried to log in');
-    }
+    async login() {
+  let username = 'user'
+  let password = 'password'
+
+  const credentials = 'username=' +
+    encodeURIComponent(username)
+    + '&password=' +
+    encodeURIComponent(password)
+
+  let response = await fetch("http://localhost:5000/api/v1/user", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: credentials
+  });
+
+  if(response.url.includes('error')) {
+    console.log('Wrong username/password');
+  } else {
+    console.log('u logged in');
+    console.log(response.body.email);
+  }
+}
   },
     
     mounted () {
