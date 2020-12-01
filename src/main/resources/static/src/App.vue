@@ -1,32 +1,23 @@
 <template>
   <div id="app">
     <Header/>
-    <img alt="Vue logo" src="./assets/logo.png">
-    <div>
-  </div>
+    <div>AWESOME AUCTIONS</div>
+    <router-view />
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
 
-// import Vue from 'vue'
-// import { Component } from "vue-property-decorator";
-
-// @Component({
-//   components: {
-//     // NavBar
-//   }
-// })
-// export default class App extends Vue {}
-
 export default {
   name: 'app',
+  created() {
+    this.$store.dispatch('fetchAuctions');
+  },
   components: {
     Header
   }
 }
-
 
 </script>
 

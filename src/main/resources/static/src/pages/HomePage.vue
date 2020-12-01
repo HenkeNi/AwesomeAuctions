@@ -1,39 +1,39 @@
 <template>
   <div class="home-page">
-    <h1>Auction List...</h1>
-    <h1>{{title}}</h1>
-    <div>
-
-    </div>
+      <input v-model="search" type="text" placeholder="Search Auction..." />
+      <AuctionList />
   </div>
-
 </template>
 
+
 <script>
+import AuctionList from "../components/AuctionList.vue";
 
-//import { Vue } from "vue-property-decorator";
-//import Vue from 'vue'
-//import Component from 'vue-class-component'
-
-export default { //class HomePage extends Vue {
+export default { 
   data() {
     return {
-      title: 'Hello'
+      title: 'Hello',
+      search: "",
     };
-  }
+  },
+  components: {
+    AuctionList
+  },
+  watch: {
+    search() {
+      this.$store.commit('setAuctionSearched', this.search);      
+    }
+  },
 }
-
 </script>
 
 <style>
 .home-page h1 {
-
     text-align: center;
 }
 
 div {
   background-color: #f3f3f3;
 }
-
 </style>
 
