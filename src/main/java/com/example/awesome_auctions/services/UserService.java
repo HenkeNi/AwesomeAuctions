@@ -16,7 +16,13 @@ import java.util.List;
 public class UserService {
 
     @Autowired
+    private MyUserDetailsService myUserDetailsService;
+
+    @Autowired
     private UserRepo userRepo;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public List<User> findAll() {
         return userRepo.findAll();
@@ -28,6 +34,9 @@ public class UserService {
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found by id"));
     }
 
+    public User findByName(String name) {
+        return userRepo.findByName(name).orElseThrow(RuntimeException::new);
+    }
 
     public User save(User user) {
         return userRepo.save(user);
@@ -36,11 +45,16 @@ public class UserService {
 
 
     public void update(String id, User user) {
+        var currentUser = findByName(myUserDetailsService.getCurrentUser());
         if (!userRepo.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
         }
-        user.setId(id);
-        userRepo.save(user);
+        if(sameUserOrAdminOrEditor(currentUser, id)) {
+            user.setId(id);
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            userRepo.save(user);
+        }
+        else throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "You can not update this user");
     }
 
 
