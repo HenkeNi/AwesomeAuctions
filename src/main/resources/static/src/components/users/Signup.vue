@@ -84,6 +84,6 @@ button {
   );
 }
 .btn {
-  background: rgb(230, 12, 128);
+  background: #ee6e73;
 }
 </style>
