@@ -7,7 +7,7 @@
       <br>
       <br>
       <p class="test">Asking bid</p>
-      <input class="asking-bid" type="number">
+      <input class="asking-bid" type="number" min=0 oninput="validity.valid||(value='');">
       <br>
         <button class="create-auction btn waves-effect waves-light" type="submit" name="action">Create auction</button>
   </div>
@@ -20,10 +20,15 @@ import M from 'materialize-css'
 
 export default {
 
-
     mounted () {
-        M.AutoInit()
-    }
+        M.AutoInit(),
+
+        fetch('http://localhost:5000/api/v1/user')
+        .then(res => {
+            return res.json()
+        })
+    },
+
 }
 
 </script>
