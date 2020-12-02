@@ -85,7 +85,7 @@ export default {
 
 h5 {
   margin-top: 0px;
-    background-color: white;
+  background-color: white;
 
   font-size: 130%;
 }
@@ -98,18 +98,18 @@ h5 {
 }
 
 .expires {
-    background-color: white;
+  background-color: white;
   text-align: end;
   padding-right: 10px;
   padding-bottom: 0px;
   margin-bottom: 0px;
-
 }
 
 .expires h4 {
   font-size: 130%;
   margin: 0px;
   padding-bottom: 2px;
+  padding-top: 20px;
 }
 
 /* .item-img {
