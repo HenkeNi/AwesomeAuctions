@@ -62,7 +62,7 @@ export default {
                 })
             }).then(res => {
                 return res.json()
-            }).then(data => console.log(data)).then(console.log("HOWDY"))
+            }).then(data => this.$store.commit('setUser', data))
         }
     }
 }
