@@ -64,11 +64,14 @@ export default {
   margin: 5px 20px 5px 20px;
   /* padding-left: 15px; */
   cursor: pointer;
+  background-color: white;
+  border: 2px solid darkgray;
 }
 
 .item-desc {
   text-align: start;
   padding: 0px 15px;
+  background-color: white;
   /* padding-left: 25px; */
 }
 
@@ -82,6 +85,8 @@ export default {
 
 h5 {
   margin-top: 0px;
+    background-color: white;
+
   font-size: 130%;
 }
 
@@ -93,7 +98,7 @@ h5 {
 }
 
 .expires {
-
+    background-color: white;
   text-align: end;
   padding-right: 10px;
   padding-bottom: 0px;
