@@ -122,6 +122,10 @@ background-color: red;
 
 }
 
+.nav-wrapper {
+  background-color: darkgray;
+}
+
 .nav-info{
 
    align-items: center;

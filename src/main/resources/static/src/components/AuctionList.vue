@@ -77,7 +77,7 @@ export default {
 
 <style scoped>
   .article-list {
-    background-color: lightblue;
+    background-color: rgb(231, 231, 231);
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
