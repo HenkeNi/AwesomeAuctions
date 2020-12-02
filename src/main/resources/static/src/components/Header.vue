@@ -123,7 +123,7 @@ background-color: red;
 }
 
 .nav-wrapper {
-  background-color: darkgray;
+  background-color: rgb(100, 98, 98);
 }
 
 .nav-info{
