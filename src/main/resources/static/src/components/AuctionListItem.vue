@@ -2,11 +2,16 @@
   <div @click="goToAuctionDetails(auction)" class="auction-item">
     <img class="item-img" src="https://i.ebayimg.com/images/g/N0oAAOSwmo1fdoDf/s-l640.jpg" />
     <div class="item-desc">
-      <h2>{{ auction.productName }}</h2>
-      <h4>Starting bid: {{ auction.startBid }}</h4>
-      <!-- <h5>Current Bid: {{ (auction.currentBid == undefined ? "Not Available" : auction.currentBid) }}</h5> -->
-            <h5>Current Bid: {{ (currentBid == undefined || currentBid === 0 ? "Not Available" : currentBid) }}</h5>
-      <h4>Ends at: {{ auction.endDate }}</h4>
+      <h3 class="product-name">{{ auction.productName }}</h3>
+      <div class="currentbid">
+        <!-- <h4>Starting bid: {{ auction.startBid }}</h4> -->
+        <!-- <h5>Current Bid: {{ (auction.currentBid == undefined ? "Not Available" : auction.currentBid) }}</h5> -->
+        <h5>Current Bid: {{ (currentBid == undefined || currentBid === 0 ? "Not Available" : currentBid) }}</h5>
+      </div>
+      
+      <div class="expires">
+        <h4>Ends at: {{ auction.endDate }}</h4>
+      </div>
     </div>
    </div>
 </template>
@@ -57,23 +62,49 @@ export default {
 .auction-item {
   width: 25vw;
   margin: 5px 20px 5px 20px;
-  padding-left: 15px;
+  /* padding-left: 15px; */
   cursor: pointer;
 }
 
 .item-desc {
   text-align: start;
-  padding-left: 25px;
+  padding: 0px 15px;
+  /* padding-left: 25px; */
 }
 
-.item-desc h2 {
+.product-name {
+  width: 100%;
   margin-top: 2px;
+  margin-bottom: 2px;
+  font-size: 200%;
+  text-align: center;
+}
+
+h5 {
+  margin-top: 0px;
+  font-size: 130%;
 }
 
 .auction-item img {
+  padding-top: 10px;
   flex-shrink: 0;
   max-width: 60%;
   max-height: 60%;
+}
+
+.expires {
+
+  text-align: end;
+  padding-right: 10px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+
+}
+
+.expires h4 {
+  font-size: 130%;
+  margin: 0px;
+  padding-bottom: 2px;
 }
 
 /* .item-img {
