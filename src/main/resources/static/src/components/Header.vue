@@ -2,10 +2,10 @@
 <template>
   <nav>
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo center">Awesome Auction</a>
+      <a href="/" class="brand-logo center darken">Awesome Auction</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Home</a></li>
-        <li><a href="badges.html">About</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
         <li><a class="modal-trigger" href="#login">Log In</a>
         <li>
           <a href="#signup" class="modal-trigger">Create Account</a>
