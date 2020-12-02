@@ -16,6 +16,9 @@ export default new Vuex.Store({
     auctionSearched(state) {
       return state.auctionSearched;
     },
+    user(state) {
+      return state.user;
+    }
   },
   mutations: {
     setAuctionList(state, auctionList) {
@@ -24,7 +27,9 @@ export default new Vuex.Store({
     setAuctionSearched(state, searched) {
       state.auctionSearched = searched;
     },
-    
+    setUser(state, user) {
+      state.user = user;
+    }
   },
   actions: {
     async fetchAuctions({ commit }) {

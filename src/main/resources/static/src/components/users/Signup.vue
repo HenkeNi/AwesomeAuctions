@@ -7,19 +7,19 @@
           <hr class="hr-style" />
           <form @submit.prevent="signup">
             <div class="input-field">
-              <input type="text" id="text" v-model="name" />
+              <input required type="text" id="text" v-model="name" />
               <label for="email">Name</label>
             </div>
             <div class="input-field">
-              <input type="email" id="email" v-model="email" />
+              <input required type="email" id="email" v-model="email" />
               <label for="email">E-mail</label>
             </div>
             <div class="input-field">
-                <input type="number" id="phone-number" v-model="phoneNumber" />
+                <input required type="number" id="phone-number" v-model="phoneNumber" />
                 <label for="phone-number">Phonenumber:</label>
             </div>
             <div class="input-field">
-              <input type="password" id="password" v-model="password" />
+              <input required type="password" id="password" v-model="password" />
                 <label for="password">Password:</label>
             </div>
             <div class="alert center red-text">
@@ -62,7 +62,7 @@ export default {
                 })
             }).then(res => {
                 return res.json()
-            }).then(data => console.log(data))
+            }).then(data => this.$store.commit('setUser', data))
         }
     }
 }
