@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>Current Auctions:</h3>
+    <h4>Current Auctions:</h4>
     <h4>{{ searchedAuction }}</h4>
     <div class="article-list">
       <AuctionListItem
@@ -82,4 +82,11 @@ export default {
     flex-flow: row wrap;
     justify-content: space-around;
   }
+
+  h4 {
+    font-size: 150%;
+    text-align: start;
+    padding-left: 25px;
+  }
+
 </style>
