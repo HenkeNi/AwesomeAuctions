@@ -15,6 +15,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -54,6 +55,15 @@ public class UserController {
     public ResponseEntity<User> saveUser(@RequestBody User user) {
         //var savedUser = userService.save(user);
         return ResponseEntity.ok(userService.save(user));
+    }
+
+    @PostMapping("/whoami")
+    public ResponseEntity<User> whoami() {
+        User user = userService.getCurrentUser();
+        if(user == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(user);
     }
 
     @PostMapping("/login")
