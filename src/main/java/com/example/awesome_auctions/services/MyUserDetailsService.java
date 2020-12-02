@@ -21,7 +21,12 @@ public class MyUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepo userRepo;
 
-
+    @PostConstruct
+    private void createDefaultUsers(){
+        if (userRepo.findByEmail("user@user.com") == null) {
+            addUser(new User("user@user.com", "password"));
+        }
+    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -32,8 +37,9 @@ public class MyUserDetailsService implements UserDetailsService {
         return toUserDetails(user);
     }
 
-    public User addUser(String email, String password){
-        User user = new User(email, encoder.encode(password));
+    public User addUser(User user){
+        user.setPassword(encoder.encode(user.getPassword()));
+
         try {
             return userRepo.save(user);
         } catch (Exception ex) {
@@ -50,4 +56,6 @@ public class MyUserDetailsService implements UserDetailsService {
                 .password(user.getPassword())
                 .roles("USER").build();
     }
+
+
 }

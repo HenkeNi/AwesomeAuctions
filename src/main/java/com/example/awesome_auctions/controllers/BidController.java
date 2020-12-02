@@ -3,6 +3,7 @@ package com.example.awesome_auctions.controllers;
 import com.example.awesome_auctions.entities.Auction;
 import com.example.awesome_auctions.entities.Bid;
 import com.example.awesome_auctions.services.BidService;
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -32,6 +33,11 @@ public class BidController {
         return ResponseEntity.ok(bidService.findById(id));
     }
 
+    @GetMapping("/auctionId:{auctionId}")
+    public ResponseEntity<List<Bid>> findIdByAuctionId(@PathVariable String auctionId) {
+        System.out.println("Searching by auctionID");
+        return ResponseEntity.ok(bidService.findByAuctionID(auctionId));
+    }
 
     // TODO: VICTOR FIXA!!
     //@GetMapping

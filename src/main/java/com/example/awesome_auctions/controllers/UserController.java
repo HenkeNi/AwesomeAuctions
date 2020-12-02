@@ -15,6 +15,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -50,22 +51,33 @@ public class UserController {
     }
     
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    @Secured("ROLE_ADMIN")
+    //@Secured("ROLE_ADMIN")
     public ResponseEntity<User> saveUser(@RequestBody User user) {
-        var savedUser = userService.save(user);
-        return ResponseEntity.created(URI.create("/api/v1/user/" + savedUser.getId())).body(savedUser);
+        //var savedUser = userService.save(user);
+        return ResponseEntity.ok(userService.save(user));
+    }
+
+    @PostMapping("/whoami")
+    public ResponseEntity<User> whoami() {
+        User user = userService.getCurrentUser();
+        if(user == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(user);
     }
 
     @PostMapping("/login")
-    private ResponseEntity<User> securityLogin(String email, String password, HttpServletRequest req) {
+    public ResponseEntity<User> securityLogin(@RequestBody User user, HttpServletRequest req) {
+        System.out.println(user.toString());
         UsernamePasswordAuthenticationToken authReq
-                = new UsernamePasswordAuthenticationToken(email, password);
+                = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
+
+
         Authentication auth = authManager.authenticate(authReq);
 
         if(!auth.isAuthenticated()) {
             throw new BadCredentialsException("Wrong username or password");
         }
-
         SecurityContext sc = SecurityContextHolder.getContext();
         sc.setAuthentication(auth);
         HttpSession session = req.getSession(true);

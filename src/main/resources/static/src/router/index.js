@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomePage from '../pages/HomePage'
 import CreateAuction from '../pages/CreateAuction'
+import AuctionDetail from '../pages/AuctionDetail'
+import Contact from '../pages/Contact'
 
 
 Vue.use(VueRouter)
@@ -12,20 +14,30 @@ const routes = [
     name: 'HomePage',
     component: HomePage
   },
+  {
+    path: '/detail/:auction',
+    name: 'AuctionDetail',
+    component: AuctionDetail,
+    props: true,
+  },
+  // {
+  //   path: "/auctionDetail/:auction",
+  //   name: "AuctionDetails",
+  //   component: AuctionDetails,
+  //   props: true,
+  // }
 
   {
     path: '/createAuction',
     name: 'CreatAuction',
     component: CreateAuction
-  }
+  },
 
-
-
- /* {
+  {
     path: '/about',
-    name: 'about',
-    component: () => import('../views/About.vue')
-  }, */
+    name: 'Contact',
+    component: Contact
+  },
   
 ]
 
