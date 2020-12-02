@@ -10,8 +10,9 @@ import Header from './components/Header.vue'
 
 export default {
   name: 'app',
-  created() {
+  async created() {
     this.$store.dispatch('fetchAuctions');
+    await fetch("")
   },
   components: {
     Header

@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     auctionList: [],
     auctionSearched: "",
+    user: null
   },
   getters: {
     auctionList(state) {
@@ -22,7 +23,8 @@ export default new Vuex.Store({
     },
     setAuctionSearched(state, searched) {
       state.auctionSearched = searched;
-    }
+    },
+    
   },
   actions: {
     async fetchAuctions({ commit }) {

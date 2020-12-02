@@ -8,19 +8,19 @@
           <form @submit.prevent="signup">
             <div class="input-field">
               <input type="text" id="text" v-model="name" />
-              <label for="email">Namn</label>
+              <label for="email">Name</label>
             </div>
             <div class="input-field">
               <input type="email" id="email" v-model="email" />
-              <label for="email">E-post</label>
+              <label for="email">E-mail</label>
             </div>
             <div class="input-field">
                 <input type="number" id="phone-number" v-model="phoneNumber" />
-                <label for="phone-number">Telefonnummer:</label>
+                <label for="phone-number">Phonenumber:</label>
             </div>
             <div class="input-field">
               <input type="password" id="password" v-model="password" />
-              <label for="password">Lösenord</label>
+                <label for="password">Password:</label>
             </div>
             <div class="alert center red-text">
               
@@ -48,7 +48,7 @@ export default {
     },
     methods: {
         async signup(){
-            fetch('http://localhost:5000/api/v1/user', {
+            await fetch('http://localhost:5000/api/v1/user/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

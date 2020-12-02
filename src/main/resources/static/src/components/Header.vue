@@ -79,20 +79,22 @@ export default {
     },
     async login() {
   
-
-  /*const credentials = 'username=' +
-    encodeURIComponent(username)
+      /*console.log(this.email, this.password);
+  const credentials = 'email=' +
+    encodeURIComponent(this.email)
     + '&password=' +
-    encodeURIComponent(password)*/
+    encodeURIComponent(this.password)*/
 
   let response = await fetch("http://localhost:5000/api/v1/user/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({email: this.email, password: this.password})
+    body: 
+  JSON.stringify({email: this.email, password: this.password})
   });
 
-  if(response.url.includes('error')) {
+  if(!response.ok) {
     console.log('Wrong username/password');
+    //console.log(await response.json());
   } else {
     console.log('u logged in');
     console.log(await response.json());

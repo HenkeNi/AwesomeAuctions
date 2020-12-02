@@ -16,10 +16,10 @@
     </div>
     <div class="bid-form">
       <div class="input-field col s12">
-              <input placeholder="Input bid" id="first_name" type="text" class="validate" />
+              <input placeholder="Input bid" id="first_name" type="text" class="validate" v-model="price"/>
               <label for="first_name"></label>
       </div>
-        <a href class="btn">PLACE BUD</a>
+        <a href class="btn"  @click.prevent="placeBid(price)">PLACE BUD</a>
     </div>
     
     <!-- <div class="container">
@@ -85,12 +85,33 @@ export default {
   //props: ['auction'],
   data() {
     return {
-      title: "Details about auction"
+      title: "Details about auction",
+      price: 0
     };
   },
   methods: {
     standby() {
       document.getElementById('auction-img').src = "./skor.jpg"
+    },
+    async placeBid(price){
+      
+      console.log(price);
+      console.log(this.$route.params.auction.id);
+      await fetch('http://localhost:5000/api/v1/bid', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userID:"123",
+        auctionID: this.$route.params.auction.id,
+        price: price
+      })
+    })
+    .then(res => {
+      return res.json()
+    })
+    .then(data => console.log(data))
     }
   },
   mounted() {
