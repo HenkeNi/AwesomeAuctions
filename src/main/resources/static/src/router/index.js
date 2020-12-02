@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import HomePage from '../pages/HomePage'
 import CreateAuction from '../pages/CreateAuction'
 import AuctionDetail from '../pages/AuctionDetail'
-import About from '../pages/About'
+import Contact from '../pages/Contact'
 
 
 Vue.use(VueRouter)
@@ -35,8 +35,8 @@ const routes = [
 
   {
     path: '/about',
-    name: 'About',
-    component: About
+    name: 'Contact',
+    component: Contact
   },
   
 ]
