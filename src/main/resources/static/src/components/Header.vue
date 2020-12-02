@@ -41,6 +41,11 @@
 
         
       </ul>
+      <div class="modal" id="signup">
+        <div>
+          <Signup></Signup>
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -51,12 +56,12 @@
   
 <script>
 import M from 'materialize-css'
-//import Signup from '../components/users/Signup'
+import Signup from '../components/users/Signup'
 
 export default {
     name: 'header',
     components: {
-      //Signup
+      Signup
     },
   data() {
     return {
