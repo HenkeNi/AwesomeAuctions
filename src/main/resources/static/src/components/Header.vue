@@ -7,8 +7,9 @@
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
         <li><a class="modal-trigger" href="#login">Log In</a>
+        <li><a href="#signup" class="modal-trigger">Create Account</a></li>
         <li>
-          <a href="#signup" class="modal-trigger">Create Account</a>
+          <a href="/" on:click="logout" v-if="this.$store.getters.loggedInStatus == true">Logout</a>
         </li>
 
   <!-- Modal Structure -->
@@ -71,6 +72,10 @@ export default {
     }
   },
   methods: {
+    logout(){
+      this.$store.commit('setIsLoggedIn', false)
+      fetch('http://localhost:5000/logout')
+    },
     closeSignup() {
      
         let modal = document.querySelector("#signup");
@@ -98,7 +103,9 @@ export default {
   } else {
     console.log('u logged in');
     console.log(await response.json());
+    this.$store.commit('setIsLoggedIn', true)
   }
+
 }
   },
     
