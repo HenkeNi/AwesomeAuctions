@@ -12,7 +12,13 @@ export default {
   name: 'app',
   async created() {
     this.$store.dispatch('fetchAuctions');
-    await fetch("")
+    console.log('hej');
+    await fetch("http://localhost:5000/api/v1/user/whoami")
+     .then(res => {
+      return res.json()
+    })
+    .then(data => console.log(data))
+    
   },
   components: {
     Header

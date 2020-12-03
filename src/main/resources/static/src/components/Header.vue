@@ -98,6 +98,7 @@ export default {
   } else {
     console.log('u logged in');
     console.log(await response.json());
+    console.log(response.url.id)
   }
 }
   },

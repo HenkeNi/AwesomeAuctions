@@ -48,6 +48,13 @@ public class UserController {
     public ResponseEntity<User> findUserById(@PathVariable String id) {
         return ResponseEntity.ok(userService.findById(id));
     }
+    @GetMapping("/whoami")
+    public ResponseEntity<User> whoAmI() {
+        System.out.println("in whoami");
+        User user = userService.getCurrentUser();
+        System.out.println(user.toString());
+        return ResponseEntity.ok(userService.getCurrentUser());
+    }
     
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     //@Secured("ROLE_ADMIN")

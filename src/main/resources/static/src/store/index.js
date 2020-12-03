@@ -24,7 +24,9 @@ export default new Vuex.Store({
     setAuctionSearched(state, searched) {
       state.auctionSearched = searched;
     },
-    
+    setUser() {
+      
+    }
   },
   actions: {
     async fetchAuctions({ commit }) {
