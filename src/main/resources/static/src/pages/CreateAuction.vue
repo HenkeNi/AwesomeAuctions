@@ -18,7 +18,7 @@
       <input class="asking-bid" type="number" min=0 oninput="validity.valid||(value='');" v-model="startBid">
       <br>
       <p class="test">End date</p>
-      <input class="end-date" type="date" min=0 oninput="validity.valid||(value='');" v-model="endDate">
+      <input class="end-date" type="number" min=0 oninput="validity.valid||(value='');" v-model="endDate">
       <br>
         <button class="create-auction btn waves-effect waves-light" type="submit" name="action" >Create auction</button>
   </div>
@@ -51,8 +51,22 @@ export default {
         })
     },
     methods: {
-        createAuction(){
+        async createAuction(){
             console.log(this.name, this.desc, this.img, this.startBid, this.endDate);
+            await fetch('http://localhost:5000/api/v1/auction', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userID:"123",
+        productName: this.name,
+        description: this.desc,
+        imageURL: this.img,
+        startBid: this.startBid,
+        endDate: this.endDate
+      })
+    })
         }
     }
 
