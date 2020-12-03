@@ -10,6 +10,7 @@ public class Auction {
 
     @Id
     private String id;
+    private String userID;
     private String productName;
     private String description;
     private String imageURL;
@@ -19,7 +20,7 @@ public class Auction {
     public Auction() {
     }
 
-    public Auction(String productName, String description, String imageURL, double startBid, long endDate) {
+    public Auction(String userID, String productName, String description, String imageURL, double startBid, long endDate) {
         this.productName = productName;
         this.description = description;
         this.imageURL = imageURL;
@@ -73,5 +74,13 @@ public class Auction {
 
     public void setEndDate(long endDate) {
         this.endDate = endDate;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 }

@@ -94,8 +94,12 @@ export default {
       document.getElementById('auction-img').src = "./skor.jpg"
     },
     async placeBid(price){
-      
+      if(this.$route.params.auction.userID == 123){
+        console.log('u cannot place bid on your own auction');
+        return 
+      }
       console.log(price);
+      console.log(this.$route.params.auction.userID);
       console.log(this.$route.params.auction.id);
       await fetch('http://localhost:5000/api/v1/bid', {
       method: 'POST',
