@@ -3,22 +3,20 @@
     <form action="#" @submit.prevent="createAuction()">
   <div class="auction">
       <h1>Create new auction</h1>
-      <p class="test">Product name</p>
-      <input class="product-name" v-model="name">
+      <p class="p-tag">Product name</p>
+      <input class="product-name width-input" v-model="name">
       <br>
-      <p class="desc">Description</p>
-      <input class="product-name" v-model="desc">
+      <p class="p-tag">Description</p>
+      <input class="description width-input" v-model="desc">
       <br>
-       
-    <p class="test">Image URL</p>
-      <input class="img-url" type="text" v-model="img">
+      <p class="p-tag">Image URL</p>
+      <input class="img-url width-input" type="text" v-model="img">
       <br>
-  
-      <p class="test">Start bid</p>
-      <input class="asking-bid" type="number" min=0 oninput="validity.valid||(value='');" v-model="startBid">
+      <p class="p-tag">Start bid</p>
+      <input class="asking-bid width-input" type="number" min=0 oninput="validity.valid||(value='');" v-model="startBid">
       <br>
-      <p class="test">End date</p>
-      <input class="end-date" type="number" min=0 oninput="validity.valid||(value='');" v-model="endDate">
+      <p class="p-tag">End date</p>
+      <input class="end-date width-input" type="number" min=0 oninput="validity.valid||(value='');" v-model="endDate">
       <br>
         <button class="create-auction btn waves-effect waves-light" type="submit" name="action" >Create auction</button>
   </div>
@@ -80,7 +78,7 @@ export default {
     margin:0 auto;
 }
 
-.product-name {
+.width-input {
     width: 40% !important;
 }
 
@@ -88,7 +86,7 @@ export default {
     width: 40% !important;
 }
 
-.test {
+.p-tag {
     margin-bottom: 0;
 }
 
