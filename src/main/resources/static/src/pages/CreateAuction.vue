@@ -1,16 +1,34 @@
 <template>
 <div class="containerAuction">
+    <form action="#" @submit.prevent="createAuction()">
   <div class="auction">
       <h1>Create new auction</h1>
       <p class="test">Product name</p>
-      <input class="product-name">
+      <input class="product-name" v-model="name">
       <br>
+      <p class="desc">Description</p>
+      <input class="product-name" v-model="desc">
       <br>
-      <p class="test">Asking bid</p>
-      <input class="asking-bid" type="number" min=0 oninput="validity.valid||(value='');">
+       
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>File</span>
+        <input type="file">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
+  
+      <p class="test">Start bid</p>
+      <input class="asking-bid" type="number" min=0 oninput="validity.valid||(value='');" v-model="startBid">
       <br>
-        <button class="create-auction btn waves-effect waves-light" type="submit" name="action">Create auction</button>
+      <p class="test">End date</p>
+      <input class="end-date" type="date" min=0 oninput="validity.valid||(value='');" v-model="endDate">
+      <br>
+        <button class="create-auction btn waves-effect waves-light" type="submit" name="action" >Create auction</button>
   </div>
+  </form>
   </div>
 </template>
 
@@ -19,6 +37,16 @@
 import M from 'materialize-css'
 
 export default {
+    data() {
+        return {
+            name: '',
+            desc: '',
+            img: '',
+            startBid: '',
+            endDate: ''
+
+        }
+    },
 
     mounted () {
         M.AutoInit(),
@@ -28,6 +56,11 @@ export default {
             return res.json()
         })
     },
+    methods: {
+        createAuction(){
+            console.log(this.name, this.desc, this.img, this.startBid, this.endDate);
+        }
+    }
 
 }
 
