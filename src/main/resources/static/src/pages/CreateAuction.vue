@@ -10,15 +10,9 @@
       <input class="product-name" v-model="desc">
       <br>
        
-    <div class="file-field input-field">
-      <div class="btn">
-        <span>File</span>
-        <input type="file">
-      </div>
-      <div class="file-path-wrapper">
-        <input class="file-path validate" type="text">
-      </div>
-    </div>
+    <p class="test">Image URL</p>
+      <input class="img-url" type="text" v-model="img">
+      <br>
   
       <p class="test">Start bid</p>
       <input class="asking-bid" type="number" min=0 oninput="validity.valid||(value='');" v-model="startBid">
