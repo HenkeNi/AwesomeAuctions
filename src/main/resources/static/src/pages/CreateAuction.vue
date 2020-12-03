@@ -7,16 +7,16 @@
       <input class="product-name width-input" v-model="name">
       <br>
       <p class="p-tag">Description</p>
-      <input class="description width-input" v-model="desc">
+      <input class="product-name description width-input" v-model="desc">
       <br>
       <p class="p-tag">Image URL</p>
-      <input class="img-url width-input" type="text" v-model="img">
+      <input class="product-name img-url width-input" type="text" v-model="img">
       <br>
       <p class="p-tag">Start bid</p>
-      <input class="asking-bid width-input" type="number" min=0 oninput="validity.valid||(value='');" v-model="startBid">
+      <input class="product-name asking-bid width-input" type="number" min=0 oninput="validity.valid||(value='');" v-model="startBid">
       <br>
       <p class="p-tag">End date</p>
-      <input class="end-date width-input" type="number" min=0 oninput="validity.valid||(value='');" v-model="endDate">
+      <input class="product-name end-date width-input" type="number" min=1 max="30" oninput="validity.valid||(value='');" v-model="endDate">
       <br>
         <button class="create-auction btn waves-effect waves-light" type="submit" name="action" >Create auction</button>
   </div>
