@@ -53,7 +53,7 @@ public class UserController {
         System.out.println("in whoami");
         User user = userService.getCurrentUser();
         System.out.println(user.toString());
-        return ResponseEntity.ok(userService.getCurrentUser());
+        return ResponseEntity.ok(user);
     }
     
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)

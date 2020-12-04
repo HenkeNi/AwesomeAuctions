@@ -13,11 +13,9 @@ export default {
   async created() {
     this.$store.dispatch('fetchAuctions');
     console.log('hej');
-    await fetch("http://localhost:5000/api/v1/user/whoami")
-     .then(res => {
-      return res.json()
-    })
-    .then(data => console.log(data))
+    let res = await fetch("http://localhost:5000/api/v1/user/whoami")
+     res = await res.json()
+    console.log(res);
     
   },
   components: {
