@@ -6,8 +6,8 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
-        <li><a class="modal-trigger" href="#login">Log In</a>
-        <li><a href="#signup" class="modal-trigger">Create Account</a></li>
+        <li><a class="modal-trigger" href="#login" v-if="this.$store.getters.loggedInStatus == false">Log In</a>
+        <li><a href="#signup" class="modal-trigger" v-if="this.$store.getters.loggedInStatus == false">Create Account</a></li>
         <li>
           <a href="/" on:click="logout" v-if="this.$store.getters.loggedInStatus == true">Logout</a>
         </li>
@@ -60,7 +60,7 @@ import M from 'materialize-css'
 import Signup from '../components/users/Signup'
 
 export default {
-    name: 'header',
+    name: 'header-navbar',
     components: {
       Signup
     },
