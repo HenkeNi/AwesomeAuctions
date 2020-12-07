@@ -62,7 +62,8 @@ export default {
                 })
             }).then(res => {
                 return res.json()
-            }).then(data => console.log(data));//.then(data => this.$store.commit('setUser', data))
+            }).then(data => console.log(data))//.then(data => this.$store.commit('setUser', data))
+           // console.log(this.$store.getters.user)
         }
     }
 }
