@@ -10,13 +10,37 @@ import Header from './components/Header.vue'
 
 export default {
   name: 'app',
-  async created() {
-    this.$store.dispatch('fetchAuctions');
-    console.log('hej');
-    let res = await fetch("http://localhost:5000/api/v1/user/whoami")
-     res = await res.json()
-    console.log(res);
+  methods: {
+    async fetchAuctions() {
+      this.$store.dispatch('fetchAuctions');
+    },
+
+    async fetchCurrentUser() {
+
+      // Hårdkoda mail, fetcha och spara till vuex
+
+      console.log("FETCHING......");
+      let res = await fetch("http://localhost:5000/api/v1/user/whoami").catch((err) => console.error("ERROR HAPPENED: ", err));
     
+
+      if (!res.ok) {
+        console.log("BAD RESPONSE");
+      } else {
+        console.log("WAS OKAY");
+        //console.log(await res.json().catch((err) => console.error("ERROR HAPPENED: ", err)));
+      }
+
+      res = await res.json().catch((err) => console.error("ERROR HAPPENED: ", err));
+      console.log("Fetched current txt", res);
+
+
+      //this.$store.commit('saveUser', res);
+      //console.log(this.$store.getters.user);
+    }
+  },
+  created() {
+    this.fetchAuctions();
+    this.fetchCurrentUser();
   },
   components: {
     Header

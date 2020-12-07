@@ -10,7 +10,7 @@
         <li>
           <a href="#signup" class="modal-trigger">Create Account</a>
         </li>
-
+      <button @click="logout">logout</button>
   <!-- Modal Structure -->
   <div id="login" class="modal">
     <div class="container-fluid">
@@ -87,6 +87,7 @@ export default {
 
   let response = await fetch("http://localhost:5000/api/v1/user/login", {
     method: "POST",
+    //mode: "no-cors",
     headers: { "Content-Type": "application/json" },
     body: 
   JSON.stringify({email: this.email, password: this.password})
@@ -98,9 +99,14 @@ export default {
   } else {
     console.log('u logged in');
     console.log(await response.json());
-    console.log(response.url.id)
+    //console.log(response.url.id)
   }
-}
+  },
+  async logout() {
+    console.log("LOGUOT");
+    let res = await fetch('http://localhost:5000/api/v1/user/logout');
+    console.log(res);
+  }
   },
     
     mounted () {
