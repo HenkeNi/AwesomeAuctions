@@ -72,15 +72,21 @@ export default {
     }
   },
   methods: {
+    closeSignin(){
+      if (this.$store.getters.loggedInStatus === true) {
+        let modal = document.querySelector("#login");
+        this.$M.Modal.getInstance(modal).close();
+      }
+    },
+    closeSignup(){
+      if (this.isLoggedin) {
+        let modal = document.querySelector("#signup");
+        this.$M.Modal.getInstance(modal).close();
+      }
+    },
     logout(){
       this.$store.commit('setIsLoggedIn', false)
       fetch('http://localhost:5000/logout')
-    },
-    closeSignup() {
-     
-        let modal = document.querySelector("#signup");
-        this.$M.Modal.getInstance(modal).close();
-    
     },
     async login() {
   
@@ -104,9 +110,11 @@ export default {
     console.log('u logged in');
     console.log(await response.json());
     this.$store.commit('setIsLoggedIn', true)
+    this.closeSignin()
   }
 
-}
+},
+
   },
     
     mounted () {
@@ -114,9 +122,9 @@ export default {
     let modal = document.querySelectorAll(".modal");
     this.$M.Modal.init(modal);
   
-},
-    
 }
+}
+    
 
 </script>
 <style>
