@@ -63,12 +63,12 @@ public class User {
         this.email = email;
     }
 
-    @JsonIgnore
+    //@JsonIgnore -- FOR NOW....
     public String getPassword() {
         return password;
     }
 
-    @JsonProperty
+    //@JsonProperty
     public void setPassword(String password) {
         this.password = password;
     }
