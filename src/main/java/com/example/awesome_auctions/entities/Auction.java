@@ -15,12 +15,12 @@ public class Auction {
     private String description;
     private String imageURL;
     private double startBid;
-    private long endDate;
+    private String endDate;
 
     public Auction() {
     }
 
-    public Auction(String userID, String productName, String description, String imageURL, double startBid, long endDate) {
+    public Auction(String userID, String productName, String description, String imageURL, double startBid, String endDate) {
         this.productName = productName;
         this.description = description;
         this.imageURL = imageURL;
@@ -68,11 +68,11 @@ public class Auction {
         this.startBid = startBid;
     }
 
-    public long getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(long endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
