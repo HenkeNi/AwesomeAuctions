@@ -68,7 +68,7 @@ export default {
                 return res.json()
             }).then(data => { 
               console.log(data); 
-              localStorage.setItem('currentUser', JSON.stringify(data))
+              localStorage.setItem('currentUser', JSON.stringify(data));
             })
         }
       }
