@@ -14,11 +14,13 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.net.URI;
 import java.util.List;
@@ -38,17 +40,40 @@ public class UserController {
     private AuthenticationManager authManager;
 
     @GetMapping
-    @Secured({"ROLE_USER", "ROLE,ADMIN"})
+    //@Secured({"ROLE_USER", "ROLE,ADMIN"})
     public ResponseEntity<List<User>> findUser(@RequestParam(required = false) String name) {
         var user = userService.findAll();
         return ResponseEntity.ok(user);
     }
 
     @GetMapping("/{id}")
-    @Secured({"ROLE_EDITOR", "ROLE_ADMIN"})
+   // @Secured({"ROLE_EDITOR", "ROLE_ADMIN"})
     public ResponseEntity<User> findUserById(@PathVariable String id) {
         return ResponseEntity.ok(userService.findById(id));
     }
+
+   /* @GetMapping("/whoami")
+    public User whoAmI() {
+        System.out.println("in whoami");
+
+        // User user = userService.getCurrentUser();
+        //System.out.printf("CUrrent user", user);
+        //System.out.println(user.getName());
+        User user = userService.getCurrentUser();
+        System.out.println(user);
+        return user;
+        //return ResponseEntity.ok(userService.getCurrentUser());
+    }*/
+
+    @GetMapping("/whoami")
+    public ResponseEntity<User> whoami(HttpServletRequest req, HttpServletResponse res) {
+    User user = userService.getCurrentUser();
+        if(user==null){
+          throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(user);
+    }
+
     
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     //@Secured("ROLE_ADMIN")
@@ -68,10 +93,9 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<User> securityLogin(@RequestBody User user, HttpServletRequest req) {
-        System.out.println(user.toString());
+        //System.out.println(user.toString());
         UsernamePasswordAuthenticationToken authReq
                 = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
-
 
         Authentication auth = authManager.authenticate(authReq);
 
@@ -86,9 +110,23 @@ public class UserController {
         return ResponseEntity.ok(userService.getCurrentUser());
     }
 
+    /*@RequestMapping(value="/logout", method = RequestMethod.GET)
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("IN lOgout!!");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+
+        return "Successfullu loged out";
+
+
+        //SecurityContextHolder.getContext().setAuthentication(null);
+        //System.out.println("LOGING OUT");
+    }*/
 
     @PutMapping("/{id}")
-    @Secured({"ROLE_EDITOR", "ROLE_ADMIN", "ROLE_USER"})
+    //@Secured({"ROLE_EDITOR", "ROLE_ADMIN", "ROLE_USER"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateUser(@PathVariable String id, @RequestBody User user) {
         userService.update(id, user);
@@ -96,7 +134,7 @@ public class UserController {
 
 
     @DeleteMapping("/{id}")
-    @Secured("ROLE_ADMIN")
+    //@Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteUser(@PathVariable String id) {
         userService.delete(id);

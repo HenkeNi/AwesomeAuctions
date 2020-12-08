@@ -23,7 +23,6 @@ public class AuctionController {
 
     @GetMapping
     public ResponseEntity<List<Auction>> findAuction(@RequestParam(required = false) String name) {
-        System.out.println("INSIDE FIND UACTION");
         var auction = auctionService.findAll(name);
         return ResponseEntity.ok(auction);
     }

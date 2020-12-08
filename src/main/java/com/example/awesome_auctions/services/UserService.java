@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -52,7 +53,9 @@ public class UserService {
     public User getCurrentUser() {
         // the login session is stored between page reloads,
         // and we can access the current authenticated user with this
+        System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        System.out.printf("CURRENT USERS EMAIL: ", email);
         return userRepo.findByEmail(email);
     }
 

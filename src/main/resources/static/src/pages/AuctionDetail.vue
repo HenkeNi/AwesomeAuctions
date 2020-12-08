@@ -7,7 +7,7 @@
       </div>
       <div class="description">
         <h5>Description</h5>
-        <p>{{ this.$route.params.auction.description }}</p>
+        <p>{{ this.$route.params.auction.id }}</p>
       </div>
     </div>
     <div class="bottom-container">
@@ -94,8 +94,12 @@ export default {
       document.getElementById('auction-img').src = "./skor.jpg"
     },
     async placeBid(price){
-      
+      if(this.$route.params.auction.userID == 123){
+        console.log('u cannot place bid on your own auction');
+        return 
+      }
       console.log(price);
+      console.log(this.$route.params.auction.userID);
       console.log(this.$route.params.auction.id);
       await fetch('http://localhost:5000/api/v1/bid', {
       method: 'POST',
@@ -103,7 +107,7 @@ export default {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        userID:"123",
+        userID: "123",
         auctionID: this.$route.params.auction.id,
         price: price
       })
