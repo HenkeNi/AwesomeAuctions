@@ -18,32 +18,32 @@ export default {
 
 
     async fetchUser() {
-      let user = JSON.parse(localStorage.getItem('currentUser'));
-      console.log("Current user: ", user, user.id);
+      let user = this.$store.getters.currentUser;
+      //let user = JSON.parse(localStorage.getItem('currentUser'));
+      console.log("Current User: ", user);
     },
 
-    async fetchCurrentUser() {
+    // async fetchCurrentUser() {
 
-      // Hårdkoda mail, fetcha och spara till vuex
 
-      console.log("FETCHING......");
-      let res = await fetch("http://localhost:5000/api/v1/user/whoami").catch((err) => console.error("ERROR HAPPENED: ", err));
+    //   console.log("FETCHING......");
+    //   let res = await fetch("http://localhost:5000/api/v1/user/whoami").catch((err) => console.error("ERROR HAPPENED: ", err));
     
 
-      if (!res.ok) {
-        console.log("BAD RESPONSE");
-      } else {
-        console.log("WAS OKAY");
-        //console.log(await res.json().catch((err) => console.error("ERROR HAPPENED: ", err)));
-      }
+    //   if (!res.ok) {
+    //     console.log("BAD RESPONSE");
+    //   } else {
+    //     console.log("WAS OKAY");
+    //     //console.log(await res.json().catch((err) => console.error("ERROR HAPPENED: ", err)));
+    //   }
 
-      res = await res.json().catch((err) => console.error("ERROR HAPPENED: ", err));
-      console.log("Fetched current txt", res);
+    //   res = await res.json().catch((err) => console.error("ERROR HAPPENED: ", err));
+    //   console.log("Fetched current txt", res);
 
 
-      //this.$store.commit('saveUser', res);
-      //console.log(this.$store.getters.user);
-    }
+    //   //this.$store.commit('saveUser', res);
+    //   //console.log(this.$store.getters.user);
+    // }
   },
   created() {
     this.fetchAuctions();

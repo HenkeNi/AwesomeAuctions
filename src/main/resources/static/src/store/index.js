@@ -20,7 +20,8 @@ export default new Vuex.Store({
       return state.auctionSearched;
     },
     currentUser() {
-      localStorage.getItem('currentUser');
+      return JSON.parse(localStorage.getItem('currentUser'));
+      //localStorage.getItem('currentUser');
       //return state.currentUser;
     },
 
