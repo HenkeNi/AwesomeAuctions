@@ -1,3 +1,4 @@
+  
 import Vue from "vue";
 import Vuex from "vuex";
 
@@ -7,7 +8,8 @@ export default new Vuex.Store({
   state: {
     auctionList: [],
     auctionSearched: "",
-    user: null
+    user: null,
+    isLoggedIn: false
   },
   getters: {
     auctionList(state) {
@@ -16,6 +18,12 @@ export default new Vuex.Store({
     auctionSearched(state) {
       return state.auctionSearched;
     },
+    user(state) {
+      return state.user;
+    },
+    loggedInStatus(state){
+      return state.isLoggedIn
+    }
   },
   mutations: {
     setAuctionList(state, auctionList) {
@@ -24,8 +32,11 @@ export default new Vuex.Store({
     setAuctionSearched(state, searched) {
       state.auctionSearched = searched;
     },
-    setUser() {
-      
+    setUser(state, user) {
+      state.user = user;
+    },
+    setIsLoggedIn(state, isLoggedIn){
+      state.isLoggedIn = isLoggedIn
     }
   },
   actions: {

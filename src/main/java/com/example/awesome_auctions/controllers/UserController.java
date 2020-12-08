@@ -82,6 +82,15 @@ public class UserController {
         return ResponseEntity.ok(userService.save(user));
     }
 
+    @PostMapping("/whoami")
+    public ResponseEntity<User> whoami() {
+        User user = userService.getCurrentUser();
+        if(user == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(user);
+    }
+
     @PostMapping("/login")
     public ResponseEntity<User> securityLogin(@RequestBody User user, HttpServletRequest req) {
         //System.out.println(user.toString());
