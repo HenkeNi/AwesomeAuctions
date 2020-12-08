@@ -5,10 +5,10 @@
       <a href="/" class="brand-logo center darken">Awesome Auction</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
+        <li><a href="/contact">About</a></li>
         <li><a class="modal-trigger" href="#login">Log In</a>
         <li><a href="#signup" class="modal-trigger">Create Account</a></li>
-        <li><a href="" @click="logout">Log Out</a></li>
+        <li><a href="/" @click.prevent="logout">Log Out</a></li>
         <li>
           <a href="/" on:click="logout" v-if="this.$store.getters.loggedInStatus == true">Logout</a>
         </li>
@@ -73,9 +73,12 @@ export default {
     }
   },
   methods: {
-    logout(){
+    async logout(){
+      console.log('logging out');
       this.$store.commit('setIsLoggedIn', false)
-      fetch('http://localhost:5000/logout')
+      await fetch('http://localhost:5000/logout', {
+      
+      })
     },
     closeSignup() {
      
@@ -110,11 +113,6 @@ export default {
     this.$store.commit('setIsLoggedIn', true)
   }
   }
-  },
-  async logout() {
-    console.log("LOGUOT");
-    let res = await fetch('http://localhost:5000/api/v1/user/logout');
-    console.log(res);
   },
     
     mounted () {
