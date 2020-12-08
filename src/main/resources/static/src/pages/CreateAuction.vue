@@ -35,8 +35,8 @@ export default {
             desc: '',
             img: '',
             startBid: '',
-            endDate: ''
-
+            endDate: '',
+            user: {}
         }
     },
 
@@ -47,9 +47,11 @@ export default {
         .then(res => {
             return res.json()
         })
+        this.fetchUser();
     },
     methods: {
         async createAuction(){
+            console.log(this.user.id, 'user id');
             console.log(this.name, this.desc, this.img, this.startBid, this.endDate);
             await fetch('http://localhost:5000/api/v1/auction', {
       method: 'POST',
@@ -57,7 +59,7 @@ export default {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        userID:"123",
+        userID: this.user.id,
         productName: this.name,
         description: this.desc,
         imageURL: this.img,
@@ -65,7 +67,12 @@ export default {
         endDate: this.endDate
       })
     })
-        }
+        },
+        async fetchUser() {
+      let user = JSON.parse(localStorage.getItem('currentUser'));
+      console.log("Current user: ", user, user.id);
+      this.user = user;
+    }
     }
 
 }
