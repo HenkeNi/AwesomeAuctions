@@ -33,14 +33,19 @@ export default {
       
       let response = await fetch("http://localhost:5000/api/v1/user/login", {
         method: "POST",
-        //mode: "no-cors",
+        mode: "no-cors",
         headers: { "Content-Type": "application/json" },
         body: 
-          JSON.stringify({email: user.email, password: user.password})
+          JSON.stringify({email: user.email})
         });
+
+      console.log(response);
 
       if(!response.ok) {
         console.log('Wrong username/password');
+      } else {
+        console.log('Auto-loggin successfully');
+            this.$store.commit('setIsLoggedIn', true)
       }
     } 
     
