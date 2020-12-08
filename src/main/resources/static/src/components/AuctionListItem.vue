@@ -10,7 +10,7 @@
       </div>
       
       <div class="expires">
-        <h4>Ends at: {{ auction.endDate }}</h4>
+        <h4>Ends on: {{ auction.endDate }}</h4>
       </div>
     </div>
    </div>
