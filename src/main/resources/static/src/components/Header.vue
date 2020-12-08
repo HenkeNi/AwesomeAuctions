@@ -115,6 +115,9 @@ export default {
     console.log("LOGUOT");
     let res = await fetch('http://localhost:5000/api/v1/user/logout');
     console.log(res);
+    if (res.ok) {
+      localStorage.setItem('currentUser', null);
+    }
   },
     
     mounted () {
