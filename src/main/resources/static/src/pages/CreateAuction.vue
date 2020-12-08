@@ -15,7 +15,7 @@
       <p class="p-tag">Start bid</p>
       <input class="product-name asking-bid width-input" type="number" min=0 oninput="validity.valid||(value='');" v-model="startBid">
       <br>
-      <p class="p-tag">End date</p>
+      <p class="p-tag">Number of days</p>
       <input class="product-name end-date width-input" type="number" min=1 max="30" oninput="validity.valid||(value='');" v-model="endDate">
       <br>
         <button class="create-auction btn waves-effect waves-light" type="submit" name="action" >Create auction</button>
@@ -27,6 +27,7 @@
 <script>
 
 import M from 'materialize-css'
+import moment from 'moment'
 
 export default {
     data() {
@@ -53,6 +54,14 @@ export default {
         async createAuction(){
             console.log(this.user.id, 'user id');
             console.log(this.name, this.desc, this.img, this.startBid, this.endDate);
+            this.endDate = this.endDate*86400;
+            let currentTime = Math.round(+new Date()/1000);
+            this.endDate = this.endDate + currentTime;
+            console.log("second " + this.endDate);
+            this.endDate = new Date(this.endDate * 1000);
+            this.endDate = moment(this.endDate).format('MMM Do YYYY, h:mm:ss a')
+    
+            console.log("third " + this.endDate);
             await fetch('http://localhost:5000/api/v1/auction', {
       method: 'POST',
       headers: {
