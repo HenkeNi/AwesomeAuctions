@@ -19,11 +19,42 @@ export default {
     },
 
 
-    async fetchUser() {
+    fetchUser() {
       let user = this.$store.getters.currentUser;
       //let user = JSON.parse(localStorage.getItem('currentUser'));
       console.log("Current User: ", user);
+      return user;
+
+
     },
+
+    async signInUser() {
+      let user = this.fetchUser();
+
+      if (!user) { return;}
+
+      console.log("EMAIL: ", user.email);  
+      console.log("PASSWORD: ", user.password);
+      
+      let response = await fetch("http://localhost:5000/api/v1/user/login", {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: 
+          JSON.stringify({email: user.email})
+        });
+
+      console.log(response);
+
+      if(!response.ok) {
+        console.log('Wrong username/password');
+      } else {
+        console.log('Auto-loggin successfully');
+            this.$store.commit('setIsLoggedIn', true)
+      }
+    } 
+    
+
 
     // async fetchCurrentUser() {
 
@@ -49,7 +80,8 @@ export default {
   },
   created() {
     this.fetchAuctions();
-    this.fetchUser();
+    //this.fetchUser();
+    this.signInUser();
    // this.fetchCurrentUser();
   },
   components: {

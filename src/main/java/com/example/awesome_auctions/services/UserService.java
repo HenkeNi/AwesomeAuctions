@@ -23,8 +23,8 @@ public class UserService {
     @Autowired
     private UserRepo userRepo;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    //@Autowired
+    //private PasswordEncoder passwordEncoder;
 
     public List<User> findAll() {
         return userRepo.findAll();
@@ -45,6 +45,7 @@ public class UserService {
     }
 
     public User save(User user) {
+        System.out.printf("USER345: ", user);
         return myUserDetailsService.addUser(user);
     }
 
@@ -66,7 +67,8 @@ public class UserService {
         }
         if(sameUserOrAdminOrEditor(currentUser, id)) {
             user.setId(id);
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setPassword(user.getPassword()); // FOR NOW.....
+            //user.setPassword(passwordEncoder.encode(user.getPassword()));
             userRepo.save(user);
         }
         else throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "You can not update this user");
