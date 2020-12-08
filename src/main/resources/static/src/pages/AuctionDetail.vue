@@ -7,7 +7,7 @@
       </div>
       <div class="description">
         <h5>Description</h5>
-        <p>{{ this.$route.params.auction.description }}</p>
+        <p>{{ this.$route.params.auction.id }}</p>
       </div>
     </div>
     <div class="bottom-container">
@@ -86,7 +86,8 @@ export default {
   data() {
     return {
       title: "Details about auction",
-      price: 0
+      price: 0,
+      user: {}
     };
   },
   methods: {
@@ -94,16 +95,26 @@ export default {
       document.getElementById('auction-img').src = "./skor.jpg"
     },
     async placeBid(price){
-      
+      if(this.$route.params.auction.userID == this.user.id){
+        console.log('you cannot bid on your own auction');
+        return
+      }
+      if(price < this.$route.params.auction.currentBid){
+        console.log('you have to bid higher than last bid');
+        return
+      }
       console.log(price);
+      console.log(this.$route.params.auction.userID);
       console.log(this.$route.params.auction.id);
+      console.log(this.user.id);
+      
       await fetch('http://localhost:5000/api/v1/bid', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        userID:"123",
+        userID: this.user.id,
         auctionID: this.$route.params.auction.id,
         price: price
       })
@@ -111,32 +122,29 @@ export default {
     .then(res => {
       return res.json()
     })
-    .then(data => console.log(data))
+    .then(data => console.log(data, 'finish post'))
+    },
+    async fetchUser() {
+      let user = JSON.parse(localStorage.getItem('currentUser'));
+      console.log("Current user: ", user, user.id);
+      this.user = user;
     }
   },
   mounted() {
     M.AutoInit(),
       fetch(
-        "http://localhost:5000/api/v1/auction" /*, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        productName:"Window",
-        description:"Fine window",
-        imageURL:"http://window",
-        startBid:299,
-        endDate:161616
-      })
-    }*/
-      )
+        "http://localhost:5000/api/v1/auction" )
         .then(res => {
           return res.json();
         })
         .then(data => console.log(data));
     //.catch(error => console.log('ERROR'))
-  }
+    this.fetchUser()
+    
+  },
+  created() {
+    
+  },
 };
 </script>
 

@@ -48,7 +48,7 @@ public class BidController {
 
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    @Secured("ROLE_USER")
+    //@Secured("ROLE_USER")
     public ResponseEntity<Bid> saveBid(@RequestBody Bid bid) {
         var savedBid = bidService.save(bid);
         return ResponseEntity.created(URI.create("/api/v1/bid/" + savedBid.getId())).body(savedBid);

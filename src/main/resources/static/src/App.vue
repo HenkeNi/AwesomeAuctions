@@ -2,20 +2,59 @@
   <div id="app">
     <Header/>
     <router-view />
+    <Footer/>
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   name: 'app',
-  async created() {
-    this.$store.dispatch('fetchAuctions');
-    await fetch("")
+  methods: {
+
+    async fetchAuctions() {
+      this.$store.dispatch('fetchAuctions');
+    },
+
+
+    async fetchUser() {
+      let user = this.$store.getters.currentUser;
+      //let user = JSON.parse(localStorage.getItem('currentUser'));
+      console.log("Current User: ", user);
+    },
+
+    // async fetchCurrentUser() {
+
+
+    //   console.log("FETCHING......");
+    //   let res = await fetch("http://localhost:5000/api/v1/user/whoami").catch((err) => console.error("ERROR HAPPENED: ", err));
+    
+
+    //   if (!res.ok) {
+    //     console.log("BAD RESPONSE");
+    //   } else {
+    //     console.log("WAS OKAY");
+    //     //console.log(await res.json().catch((err) => console.error("ERROR HAPPENED: ", err)));
+    //   }
+
+    //   res = await res.json().catch((err) => console.error("ERROR HAPPENED: ", err));
+    //   console.log("Fetched current txt", res);
+
+
+    //   //this.$store.commit('saveUser', res);
+    //   //console.log(this.$store.getters.user);
+    // }
+  },
+  created() {
+    this.fetchAuctions();
+    this.fetchUser();
+   // this.fetchCurrentUser();
   },
   components: {
-    Header
+    Header,
+    Footer
   }
 }
 

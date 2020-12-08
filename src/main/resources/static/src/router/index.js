@@ -4,6 +4,7 @@ import HomePage from '../pages/HomePage'
 import CreateAuction from '../pages/CreateAuction'
 import AuctionDetail from '../pages/AuctionDetail'
 import Contact from '../pages/Contact'
+import Profile from '../pages/Profile'
 
 
 Vue.use(VueRouter)
@@ -34,9 +35,14 @@ const routes = [
   },
 
   {
-    path: '/about',
+    path: '/contact',
     name: 'Contact',
     component: Contact
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
   },
   
 ]
