@@ -14,6 +14,11 @@ Vue.config.productionTip = false
 new Vue({
   store,
   router,
+  //beforeCreate() {
+    //let user = localStorage.getItem('currentUser');
+    //console.log("CURRENT USER LOLOLOL: ", user);
+    //this.$store.commit('setCurrentUser', user);
+  //},
   render: h => h(App),
 
 }).$mount('#app')

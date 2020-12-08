@@ -102,18 +102,18 @@ export default {
     console.log('Wrong username/password');
     //console.log(await response.json());
   } else {
-    console.log('u logged in');
-    console.log(await response.json());
+    console.log('Successfully logged in');
+    let res = await response.json();
+    
+    localStorage.setItem('currentUser', JSON.stringify(res));
     this.$store.commit('setIsLoggedIn', true)
   }
-
-}
+  }
   },
   async logout() {
     console.log("LOGUOT");
     let res = await fetch('http://localhost:5000/api/v1/user/logout');
     console.log(res);
-  }
   },
     
     mounted () {

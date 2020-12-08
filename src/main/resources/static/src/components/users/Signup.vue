@@ -47,6 +47,10 @@ export default {
         }
     },
     methods: {
+      saveUserToStorage(user) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+      },
+
         async signup(){
             await fetch('http://localhost:5000/api/v1/user/', {
                 method: 'POST',
@@ -62,9 +66,12 @@ export default {
                 })
             }).then(res => {
                 return res.json()
-            }).then(data => console.log(data));//.then(data => this.$store.commit('setUser', data))
+            }).then(data => { 
+              console.log(data); 
+              localStorage.setItem('currentUser', JSON.stringify(data))
+            })
         }
-    }
+      }
 }
 </script>
 <style lang="css" scoped>

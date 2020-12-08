@@ -8,8 +8,9 @@ export default new Vuex.Store({
   state: {
     auctionList: [],
     auctionSearched: "",
-    user: null,
-    isLoggedIn: false
+    //user: null,
+    isLoggedIn: false,
+    currentUser: Object,
   },
   getters: {
     auctionList(state) {
@@ -18,12 +19,17 @@ export default new Vuex.Store({
     auctionSearched(state) {
       return state.auctionSearched;
     },
-    user(state) {
-      return state.user;
+    currentUser() {
+      localStorage.getItem('currentUser');
+      //return state.currentUser;
     },
-    loggedInStatus(state){
+
+    // user(state) {
+    //   return state.user;
+    // },
+    loggedInStatus(state) {
       return state.isLoggedIn
-    }
+    },
   },
   mutations: {
     setAuctionList(state, auctionList) {
@@ -32,12 +38,21 @@ export default new Vuex.Store({
     setAuctionSearched(state, searched) {
       state.auctionSearched = searched;
     },
-    setUser(state, user) {
-      state.user = user;
+    setCurrentUser(user) {
+      //state.currentUser = user;
+      console.log("SETTING USER WITH; ", user);
+      localStorage.setItem('currentUser', user);
     },
+    // setUser(state, user) {
+    //   state.user = user;
+    // },
     setIsLoggedIn(state, isLoggedIn){
       state.isLoggedIn = isLoggedIn
-    }
+    },
+    // currentlyLoggedInUser(state, user) {
+    //   localStorage.setItem('currentUser', user);
+    //   state.currentUser = user;
+    // },
   },
   actions: {
     async fetchAuctions({ commit }) {
