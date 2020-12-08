@@ -19,7 +19,7 @@ export default {
 
     async fetchUser() {
       let user = JSON.parse(localStorage.getItem('currentUser'));
-      console.log("Current user: ", user);
+      console.log("Current user: ", user, user.id);
     },
 
     async fetchCurrentUser() {
