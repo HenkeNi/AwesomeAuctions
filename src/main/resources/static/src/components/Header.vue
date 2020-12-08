@@ -8,10 +8,11 @@
         <li><a href="/about">About</a></li>
         <li><a class="modal-trigger" href="#login">Log In</a>
         <li><a href="#signup" class="modal-trigger">Create Account</a></li>
+        <li><a href="" @click="logout">Log Out</a></li>
         <li>
           <a href="/" on:click="logout" v-if="this.$store.getters.loggedInStatus == true">Logout</a>
         </li>
-      <button @click="logout">logout</button>
+      
   <!-- Modal Structure -->
   <div id="login" class="modal">
     <div class="container-fluid">
