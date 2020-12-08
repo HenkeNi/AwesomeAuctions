@@ -41,7 +41,6 @@ export default new Vuex.Store({
     },
     setCurrentUser(user) {
       //state.currentUser = user;
-      console.log("SETTING USER WITH; ", user);
       localStorage.setItem('currentUser', user);
     },
     // setUser(state, user) {
