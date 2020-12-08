@@ -36,7 +36,7 @@ public class AuctionController {
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    @Secured("ROLE_USER")
+    //@Secured("ROLE_USER")
     public ResponseEntity<Auction> saveAuction(@RequestBody Auction auction) {
         var savedAuction = auctionService.save(auction);
         return ResponseEntity.created(URI.create("/api/v1/auction/" + savedAuction.getId())).body(savedAuction);
