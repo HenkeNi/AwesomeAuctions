@@ -24,10 +24,15 @@ export default {
       //let user = JSON.parse(localStorage.getItem('currentUser'));
       console.log("Current User: ", user);
       return user;
+
+
     },
 
     async signInUser() {
       let user = this.fetchUser();
+
+      if (!user) { return;}
+
       console.log("EMAIL: ", user.email);  
       console.log("PASSWORD: ", user.password);
       
@@ -75,7 +80,7 @@ export default {
   },
   created() {
     this.fetchAuctions();
-    this.fetchUser();
+    //this.fetchUser();
     this.signInUser();
    // this.fetchCurrentUser();
   },
