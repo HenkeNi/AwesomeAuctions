@@ -11,8 +11,15 @@ import Header from './components/Header.vue'
 export default {
   name: 'app',
   methods: {
+
     async fetchAuctions() {
       this.$store.dispatch('fetchAuctions');
+    },
+
+
+    async fetchUser() {
+      let user = JSON.parse(localStorage.getItem('currentUser'));
+      console.log("Current user: ", user);
     },
 
     async fetchCurrentUser() {
@@ -40,7 +47,8 @@ export default {
   },
   created() {
     this.fetchAuctions();
-    this.fetchCurrentUser();
+    this.fetchUser();
+   // this.fetchCurrentUser();
   },
   components: {
     Header
