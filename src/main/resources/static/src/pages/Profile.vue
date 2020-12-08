@@ -1,17 +1,10 @@
-
 <template>
+<div>
+<div>Hej {{ user.name }}!</div>
+<p>Phone: {{ user.phone }}</p>
+<p>Email: {{ user.email }}</p>
 
-<div class="row">
-    <div class="col s12 m12">
-      <div class="card blue-grey darken-1">
-        <div class="card-content ffab40">
-          <span class="card-title">Welcome {{user.name}}</span>
-          
-        </div>
-      
-      </div>
-    </div>
-  </div>
+</div>
 </template>
  
 <script>

@@ -40,11 +40,12 @@ const routes = [
     component: Contact,
   },
   {
-    path: "/profile",
-    name: "Profile",
-    component: Profile,
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
   },
-];
+  
+]
 
 
 
