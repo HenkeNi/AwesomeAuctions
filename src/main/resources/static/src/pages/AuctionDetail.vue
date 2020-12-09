@@ -3,7 +3,7 @@
     <h4>{{ this.$route.params.auction.productName }}</h4>
     <div class="main-container">
       <div class="img-container">
-        <img src="./skor.jpg" />
+        <img :src="this.$route.params.auction.imageURL" />
       </div>
       <div class="description">
         <h5>Description</h5>
