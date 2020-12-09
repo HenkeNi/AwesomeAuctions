@@ -51,20 +51,7 @@ public class UserController {
     public ResponseEntity<User> findUserById(@PathVariable String id) {
         return ResponseEntity.ok(userService.findById(id));
     }
-
-   /* @GetMapping("/whoami")
-    public User whoAmI() {
-        System.out.println("in whoami");
-
-        // User user = userService.getCurrentUser();
-        //System.out.printf("CUrrent user", user);
-        //System.out.println(user.getName());
-        User user = userService.getCurrentUser();
-        System.out.println(user);
-        return user;
-        //return ResponseEntity.ok(userService.getCurrentUser());
-    }*/
-
+    
     @GetMapping("/whoami")
     public ResponseEntity<User> whoami(HttpServletRequest req, HttpServletResponse res) {
     User user = userService.getCurrentUser();
@@ -110,20 +97,7 @@ public class UserController {
         return ResponseEntity.ok(userService.getCurrentUser());
     }
 
-    /*@RequestMapping(value="/logout", method = RequestMethod.GET)
-    public String logout(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("IN logout!!");
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null) {
-            new SecurityContextLogoutHandler().logout(request, response, auth);
-        }
 
-        return "Successfully logged out";
-
-
-        //SecurityContextHolder.getContext().setAuthentication(null);
-        //System.out.println("LOGING OUT");
-    }*/
 
     @PutMapping("/{id}")
     //@Secured({"ROLE_EDITOR", "ROLE_ADMIN", "ROLE_USER"})
