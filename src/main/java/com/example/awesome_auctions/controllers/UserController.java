@@ -47,21 +47,21 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-   // @Secured({"ROLE_EDITOR", "ROLE_ADMIN"})
+    // @Secured({"ROLE_EDITOR", "ROLE_ADMIN"})
     public ResponseEntity<User> findUserById(@PathVariable String id) {
         return ResponseEntity.ok(userService.findById(id));
     }
-    
+
     @GetMapping("/whoami")
     public ResponseEntity<User> whoami(HttpServletRequest req, HttpServletResponse res) {
-    User user = userService.getCurrentUser();
+        User user = userService.getCurrentUser();
         if(user==null){
-          throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(user);
     }
 
-    
+
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     //@Secured("ROLE_ADMIN")
     public ResponseEntity<User> saveUser(@RequestBody User user) {
@@ -85,7 +85,7 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<User> securityLogin(@RequestBody User user, HttpServletRequest req) {
-        System.out.println(user.toString());
+        //System.out.println(user.toString());
         UsernamePasswordAuthenticationToken authReq
                 = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
 
