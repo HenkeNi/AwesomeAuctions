@@ -6,15 +6,15 @@
 
       <div class=" card center-align blue darken-1 ">
         <div class="card-content white-text">
-          <span class="card-title">About us</span>
-          <h2>Here you can buy what you need and sell what you don't need. You can suggest higher price also.</h2>
+          <span class="card-title text">About us</span>
+          <h2 class="text">Here you can buy what you need and sell what you don't need. You can suggest higher price also.</h2>
         </div>
         <div class="card-action red-text">
           <h2 class="yellow-text">Contact Us</h2>
           <ul>
          <li> <a class="btn-large" href="#">Send Mail</a></li>
          <br/>
-          <li><a class="btn-large" href="#">Ring Us</a></li>
+          <li><a class="btn-large" href="#">Call Us</a></li>
           </ul>
         </div>
       </div>
@@ -39,3 +39,11 @@ export default {
     this.$M.Modal.init(modal);
     }
 }
+</script>
+
+<style>
+.text {
+  color: rgb(100, 98, 98);
+}
+
+</style>
