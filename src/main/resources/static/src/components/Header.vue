@@ -1,6 +1,6 @@
 
 <template>
-  <nav>
+  <nav class="nav-style">
     <div class="nav-wrapper">
       <a href="/" class="brand-logo center darken">Awesome Auction</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -140,7 +140,8 @@ background-color: red;
 }
 
 .nav-wrapper {
-  background-color: rgb(100, 98, 98);
+  background: -webkit-linear-gradient(to top, rgb(44, 36, 156), #dfd3fb);
+  background: linear-gradient(to top, rgb(255, 2, 141), rgb(117, 9, 67));
 }
 
 .nav-info{
@@ -150,6 +151,7 @@ background-color: red;
   align-content: space-between;
    display: flex;
 }
+
 @media screen and (min-width: 0px) and (max-width: 400px) {
   #my-content { display: block; }  /* show it on small screens */
 }
