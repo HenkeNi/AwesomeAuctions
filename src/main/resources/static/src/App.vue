@@ -28,6 +28,7 @@ export default {
 
       if (json) {
         this.$store.commit('setCurrentUser', json);
+        localStorage.setItem('currentUser', JSON.stringify(json)); // For those who are fetching it directly from localStorage
       }
 
       // let user = await fetch("http://localhost:5000/api/v1/user/autologin:", {
