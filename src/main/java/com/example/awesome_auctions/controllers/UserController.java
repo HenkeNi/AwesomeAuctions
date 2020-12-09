@@ -112,13 +112,13 @@ public class UserController {
 
     /*@RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("IN lOgout!!");
+        System.out.println("IN logout!!");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
 
-        return "Successfullu loged out";
+        return "Successfully logged out";
 
 
         //SecurityContextHolder.getContext().setAuthentication(null);
