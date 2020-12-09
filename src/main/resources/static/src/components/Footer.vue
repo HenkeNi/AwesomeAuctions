@@ -1,6 +1,6 @@
 <template>
-       <nav>
-    <div class="nav-wrapper">
+       <nav class=footer>
+    <div>
       <a href="#" class="brand-logo center">Connect with us!</a>
       <ul id="nav-mobile" class="center hide-on-med-and-down">
         <li><a href="/contact">Contact</a></li>
@@ -23,8 +23,11 @@ export default {
 }
 
 </script>
-<style>
-.page-footer{
-  background-color: rgb(100, 98, 98);
+<style scoped>
+
+.footer{
+  background-color: rgb(100, 98, 98) !important;
+  position: fixed;
+  bottom: 0;
 }
 </style>
