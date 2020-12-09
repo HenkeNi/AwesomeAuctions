@@ -95,9 +95,9 @@ export default {
 
   let response = await fetch("http://localhost:5000/api/v1/user/login", {
     method: "POST",
-    mode: "no-cors",
+    //mode: "no-cors",
     headers: { 
-        'Accept': 'application/json',
+        //'Accept': 'application/json',
         'Content-Type': 'application/json' 
     },
     body: 
