@@ -38,8 +38,7 @@ public class MyUserDetailsService implements UserDetailsService {
     }
 
     public User addUser(User user){
-        //user.setPassword(encoder.encode(user.getPassword()));
-        user.setPassword(user.getPassword());
+        user.setPassword(encoder.encode(user.getPassword()));
         try {
             return userRepo.save(user);
         } catch (Exception ex) {

@@ -65,7 +65,6 @@ public class UserController {
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     //@Secured("ROLE_ADMIN")
     public ResponseEntity<User> saveUser(@RequestBody User user) {
-        //var savedUser = userService.save(user);
         return ResponseEntity.ok(userService.save(user));
     }
 
@@ -76,6 +75,12 @@ public class UserController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(user);
+    }
+
+
+    @PostMapping("/autologin")
+    public User loginUser(@RequestBody User user) {
+        return userService.findByEmail(user.getEmail());
     }
 
     @PostMapping("/login")
@@ -96,7 +101,6 @@ public class UserController {
 
         return ResponseEntity.ok(userService.getCurrentUser());
     }
-
 
 
     @PutMapping("/{id}")

@@ -46,10 +46,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout(l -> l.logoutSuccessUrl("/"));
     }
 
-    //@Bean
-    //public PasswordEncoder passwordEncoder() {
-    //    return new BCryptPasswordEncoder();
-    //}
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
     @Bean("authenticationManager")
     @Override
