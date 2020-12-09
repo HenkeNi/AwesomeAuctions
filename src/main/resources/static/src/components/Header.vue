@@ -142,6 +142,12 @@ background-color: red;
 .nav-wrapper {
   background: -webkit-linear-gradient(to top, rgb(44, 36, 156), #dfd3fb);
   background: linear-gradient(to top, rgb(255, 2, 141), rgb(117, 9, 67));
+  box-shadow:0px 0px 15px black;
+  font-weight:bold;
+}
+
+.nav-wrapper a:hover{
+  transform:translate(4px,3px);
 }
 
 .nav-info{
