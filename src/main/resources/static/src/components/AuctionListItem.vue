@@ -6,7 +6,7 @@
       <div class="currentbid">
         <!-- <h4>Starting bid: {{ auction.startBid }}</h4> -->
         <!-- <h5>Current Bid: {{ (auction.currentBid == undefined ? "Not Available" : auction.currentBid) }}</h5> -->
-        <h5>Current Bid: {{ (currentBid == undefined || currentBid === 0 ? "Not Available" : currentBid) }}</h5>
+        <h5>Current Bid: {{ (currentBid == undefined || currentBid === 0 ? "No bid" : currentBid) }}</h5>
       </div>
       
       <div class="expires">
