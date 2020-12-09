@@ -85,7 +85,7 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<User> securityLogin(@RequestBody User user, HttpServletRequest req) {
-        //System.out.println(user.toString());
+        System.out.println(user.toString());
         UsernamePasswordAuthenticationToken authReq
                 = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
 
