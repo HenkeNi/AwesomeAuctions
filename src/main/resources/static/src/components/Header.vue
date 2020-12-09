@@ -108,10 +108,10 @@ export default {
     console.log('Wrong username/password');
     //console.log(await response.json());
   } else {
-    console.log('Successfully logged in');
+    console.log('Successfully logged in!!');
     let res = await response.json();
     
-    localStorage.setItem('currentUser', JSON.stringify(res));
+    localStorage.setItem('currentUserEmail', JSON.stringify(res.email));
     this.$store.commit('setIsLoggedIn', true)
   }
   }
