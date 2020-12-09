@@ -18,71 +18,33 @@ export default {
       this.$store.dispatch('fetchAuctions');
     },
 
-
-    fetchUser() {
-      let user = this.$store.getters.currentUser;
-      //let user = JSON.parse(localStorage.getItem('currentUser'));
-      console.log("Current User: ", user);
-      return user;
-
-
-    },
-
+  
     async signInUser() {
-      let user = this.fetchUser();
 
-      if (!user) { return;}
+      let email = JSON.parse(localStorage.getItem('currentUserEmail'));
 
-      console.log("EMAIL: ", user.email);  
-      console.log("PASSWORD: ", user.password);
-      
-      let response = await fetch("http://localhost:5000/api/v1/user/login", {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: 
-          JSON.stringify({email: user.email})
-        });
+      let user = await fetch(`http://localhost:5000/api/v1/user/autologin:${email}`);
+      let json = await user.json();
 
-      console.log(response);
-
-      if(!response.ok) {
-        console.log('Wrong username/password');
-      } else {
-        console.log('Auto-loggin successfully');
-            this.$store.commit('setIsLoggedIn', true)
+      if (json) {
+        this.$store.commit('setCurrentUser', json);
       }
+
+      // let user = await fetch("http://localhost:5000/api/v1/user/autologin:", {
+      //   method: 'POST',
+      //   //mode: "no-cors",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(email)
+      //   //body: JSON.stringify({email: this.$store.getters.currentUserEmail})
+      // });
+
+      //user = await user.json();
     } 
     
-
-
-    // async fetchCurrentUser() {
-
-
-    //   console.log("FETCHING......");
-    //   let res = await fetch("http://localhost:5000/api/v1/user/whoami").catch((err) => console.error("ERROR HAPPENED: ", err));
-    
-
-    //   if (!res.ok) {
-    //     console.log("BAD RESPONSE");
-    //   } else {
-    //     console.log("WAS OKAY");
-    //     //console.log(await res.json().catch((err) => console.error("ERROR HAPPENED: ", err)));
-    //   }
-
-    //   res = await res.json().catch((err) => console.error("ERROR HAPPENED: ", err));
-    //   console.log("Fetched current txt", res);
-
-
-    //   //this.$store.commit('saveUser', res);
-    //   //console.log(this.$store.getters.user);
-    // }
   },
   created() {
     this.fetchAuctions();
-    //this.fetchUser();
     this.signInUser();
-   // this.fetchCurrentUser();
   },
   components: {
     Header,
