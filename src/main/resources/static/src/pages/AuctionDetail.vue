@@ -96,10 +96,12 @@ export default {
     },
     async placeBid(price){
       if(this.$route.params.auction.userID == this.user.id){
+        alert('You cannot bid on your own auction!')
         console.log('you cannot bid on your own auction');
         return
       }
       if(price < this.$route.params.auction.currentBid){
+        alert('You have to bid higher than last bid!')
         console.log('you have to bid higher than last bid');
         return
       }
