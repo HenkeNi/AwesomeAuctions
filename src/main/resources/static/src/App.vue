@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :style="{'background-image': 'url(' + require('./assets/background2.jpg') + ')'}">
+  <div id="app">
     <Header/>
     <router-view />
     <Footer/>
@@ -99,12 +99,19 @@ export default {
   background-color: transparent;
 }
 
+body{
+  background-image: url("./assets/background.jpg");
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  
 }
 
 #nav {
