@@ -75,9 +75,7 @@ export default {
     async logout(){
       console.log('logging out');
       this.$store.commit('setIsLoggedIn', false)
-      await fetch('http://localhost:5000/logout', {
-      
-      })
+      localStorage.clear();
     },
     closeSignup() {
      
