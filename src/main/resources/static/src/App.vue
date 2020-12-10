@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :style="{'background-image': 'url(' + require('./assets/background2.jpg') + ')'}">
     <Header/>
     <router-view />
     <Footer/>
@@ -13,6 +13,7 @@ import Footer from './components/Footer.vue'
 export default {
   name: 'app',
   methods: {
+    
 
     async fetchAuctions() {
       this.$store.dispatch('fetchAuctions');
@@ -94,6 +95,7 @@ export default {
 
 
 <style>
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

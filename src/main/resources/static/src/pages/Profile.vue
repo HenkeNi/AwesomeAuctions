@@ -1,9 +1,12 @@
 <template>
-<div>
-<div>Hej {{ user.name }}!</div>
-<p>Phone: {{ user.phone }}</p>
-<p>Email: {{ user.email }}</p>
-
+<div class="profile-page">
+  <div>
+    <h4>
+     Hej {{ user.name }}!
+    </h4>
+    <p>Phone: {{ user.phone }}</p>
+    <p>Email: {{ user.email }}</p>
+  </div>
 </div>
 </template>
  
@@ -31,3 +34,9 @@ export default{
 }
 
  </script>
+
+ <style scoped>
+ .profile-page{
+   background-image: url('../assets/background2.jpg');
+ }
+ </style>

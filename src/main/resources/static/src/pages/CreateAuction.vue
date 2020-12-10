@@ -91,6 +91,7 @@ export default {
 
 <style>
 .auction {
+    font-weight:bold;
     margin:0 auto;
 }
 

@@ -64,14 +64,17 @@ export default {
   margin: 5px 20px 5px 20px;
   /* padding-left: 15px; */
   cursor: pointer;
-  background-color: white;
+  background-image: url('../assets/auctionlistItem.jpg');
   border: 2px solid darkgray;
+  box-shadow:0px 0px 12px black;
+  border-radius: 15px;
 }
 
 .item-desc {
   text-align: start;
   padding: 0px 15px;
   background-color: white;
+  
   /* padding-left: 25px; */
 }
 
@@ -110,6 +113,11 @@ h5 {
   margin: 0px;
   padding-bottom: 2px;
   padding-top: 20px;
+}
+
+.item-img{
+  box-shadow:0px 0px 15px black;
+  border-radius: 8px;
 }
 
 /* .item-img {

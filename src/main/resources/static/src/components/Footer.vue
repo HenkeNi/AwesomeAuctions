@@ -26,8 +26,8 @@ export default {
 <style scoped>
 
 .footer{
-  background: -webkit-linear-gradient(to top, rgb(44, 36, 156), #dfd3fb);
-  background: linear-gradient(to top, rgb(255, 2, 141), rgb(117, 9, 67));
+  background: -webkit-linear-gradient(to top, rgb(188,140,78), #dfd3fb);
+  background: linear-gradient(to top, rgb(0,0,0), rgb(188,140,78));
   box-shadow:0px 0px 15px black;
   font-weight:bold;
   position: fixed;

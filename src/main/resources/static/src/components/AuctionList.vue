@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="autction-view">
     <h4>Current Auctions:</h4>
     <h4>{{ searchedAuction }}</h4>
     <div class="article-list">
@@ -75,9 +75,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style >
+.autction-view{
+  
+  
+}
+
   .article-list {
-    background-color: rgb(231, 231, 231);
+    
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
@@ -87,6 +92,8 @@ export default {
     font-size: 150%;
     text-align: start;
     padding-left: 25px;
+    font-weight:bold;
+    color:black
   }
 
 </style>
