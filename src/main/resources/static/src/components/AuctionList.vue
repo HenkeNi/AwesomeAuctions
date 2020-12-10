@@ -77,7 +77,7 @@ export default {
 
 <style >
 .autction-view{
-  
+  background-color: transparent;
   
 }
 
