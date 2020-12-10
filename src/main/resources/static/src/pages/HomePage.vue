@@ -30,15 +30,6 @@ export default {
 </script>
 
 <style>
-.home-page{
-  
-}
-
-.home-page h1 {
-    text-align: center;
-    
-}
-
 .search-field {
   width: 80vw;
   margin: auto;
@@ -49,12 +40,9 @@ export default {
   border: 1px solid red;
 }
 
-input[text]{
-  
-}
 
 div {
-  background-color: #f3f3f3;
+  background-color: transparent;
 }
 </style>
 
