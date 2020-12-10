@@ -114,8 +114,9 @@ h5 {
   padding-top: 20px;
 }
 
-/* .item-img {
-  width: 20vw;
-  height: 30vw;
-} */
+.item-img {
+  height: 30vh;
+  object-fit: cover;
+  object-position: center;
+}
 </style>
