@@ -1,6 +1,6 @@
 <template>
   <div @click="goToAuctionDetails(auction)" class="auction-item">
-    <img class="item-img" src="https://i.ebayimg.com/images/g/N0oAAOSwmo1fdoDf/s-l640.jpg" />
+    <img class="item-img responsive-img" src="https://i.ebayimg.com/images/g/N0oAAOSwmo1fdoDf/s-l640.jpg" />
     <div class="item-desc">
       <h3 class="product-name">{{ auction.productName }}</h3>
       <div class="currentbid">
