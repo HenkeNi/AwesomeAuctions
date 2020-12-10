@@ -95,6 +95,9 @@ export default {
 
 
 <style>
+.transparent{
+  background-color: transparent;
+}
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
