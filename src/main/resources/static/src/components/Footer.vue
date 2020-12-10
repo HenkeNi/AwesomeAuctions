@@ -35,6 +35,6 @@ export default {
 }
 
 .hover-effect:hover{
-  transform:translate(4px,3px);
+  transform:translate(-4px,-3px);
 }
 </style>
