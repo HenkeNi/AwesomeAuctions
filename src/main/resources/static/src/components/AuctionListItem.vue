@@ -54,8 +54,11 @@ export default {
     },
   },
   created() {
-    console.log(this.auction.imageURL);
     this.fetchCurrentBid();
+    this.interval = setInterval(() => this.fetchCurrentBid(), 1000);
+  },
+  beforeDestroy() {
+    clearInterval(this.interval);
   }
 }
 </script>
