@@ -1,16 +1,16 @@
 <template>
   <div @click="goToAuctionDetails(auction)" class="auction-item">
     <img class="item-img responsive-img" src="https://i.ebayimg.com/images/g/N0oAAOSwmo1fdoDf/s-l640.jpg" />
-    <div class="item-desc">
+    <div class="item-desc transparent">
       <h3 class="product-name">{{ auction.productName }}</h3>
-      <div class="currentbid">
+      <div class="currentbid transparent">
         <!-- <h4>Starting bid: {{ auction.startBid }}</h4> -->
         <!-- <h5>Current Bid: {{ (auction.currentBid == undefined ? "Not Available" : auction.currentBid) }}</h5> -->
-        <h5>Current Bid: {{ (currentBid == undefined || currentBid === 0 ? "No bid" : currentBid) }}</h5>
+        <h5 class="transparent">Current Bid: {{ (currentBid == undefined || currentBid === 0 ? "No bid" : currentBid) }}</h5>
       </div>
       
-      <div class="expires">
-        <h4>Ends on: {{ auction.endDate }}</h4>
+      <div class="expires transparent">
+        <h4 class="transparent">Ends on: {{ auction.endDate }}</h4>
       </div>
     </div>
    </div>
@@ -74,7 +74,8 @@ export default {
   text-align: start;
   padding: 0px 15px;
   background-color: white;
-  
+  color: whitesmoke;
+  font-weight: bold;
   /* padding-left: 25px; */
 }
 
@@ -113,6 +114,7 @@ h5 {
   margin: 0px;
   padding-bottom: 2px;
   padding-top: 20px;
+  color: whitesmoke;
 }
 
 .item-img{
