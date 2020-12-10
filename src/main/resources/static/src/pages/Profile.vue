@@ -1,8 +1,8 @@
 <template>
 <div>
-<div>Hej {{ user.name }}!</div>
-<p>Phone: {{ user.phone }}</p>
-<p>Email: {{ user.email }}</p>
+<div>Hej {{ this.$store.getters.currentUser.name }}!</div>
+<p>Phone: {{ this.$store.getters.currentUser.phone }}</p>
+<p>Email: {{ this.$store.getters.currentUser.email }}</p>
 
 </div>
 </template>

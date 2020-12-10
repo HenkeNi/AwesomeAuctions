@@ -23,8 +23,8 @@ public class UserService {
     @Autowired
     private UserRepo userRepo;
 
-    //@Autowired
-    //private PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public List<User> findAll() {
         return userRepo.findAll();
@@ -54,9 +54,7 @@ public class UserService {
     public User getCurrentUser() {
         // the login session is stored between page reloads,
         // and we can access the current authenticated user with this
-        System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
-        System.out.printf("CURRENT USERS EMAIL: ", email);
         return userRepo.findByEmail(email);
     }
 
@@ -67,8 +65,7 @@ public class UserService {
         }
         if(sameUserOrAdminOrEditor(currentUser, id)) {
             user.setId(id);
-            user.setPassword(user.getPassword()); // FOR NOW.....
-            //user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             userRepo.save(user);
         }
         else throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "You can not update this user");

@@ -96,19 +96,22 @@ export default {
   let response = await fetch("http://localhost:5000/api/v1/user/login", {
     method: "POST",
     //mode: "no-cors",
-    headers: { "Content-Type": "application/json" },
+    headers: { 
+        //'Accept': 'application/json',
+        'Content-Type': 'application/json' 
+    },
     body: 
-  JSON.stringify({email: this.email, password: this.password})
+  JSON.stringify({"email": this.email, "password": this.password})
   });
 
   if(!response.ok) {
     console.log('Wrong username/password');
     //console.log(await response.json());
   } else {
-    console.log('Successfully logged in');
+    console.log('Successfully logged in!!');
     let res = await response.json();
     
-    localStorage.setItem('currentUser', JSON.stringify(res));
+    localStorage.setItem('currentUserEmail', JSON.stringify(res.email));
     this.$store.commit('setIsLoggedIn', true)
   }
   }
