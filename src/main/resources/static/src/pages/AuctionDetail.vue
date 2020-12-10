@@ -3,7 +3,7 @@
     <h4>{{ this.$route.params.auction.productName }}</h4>
     <div class="main-container">
       <div class="img-container">
-        <img :src="this.$route.params.auction.imageURL" />
+        <img class="img-detail" :src="this.$route.params.auction.imageURL" />
       </div>
       <div class="description">
         <h5>Description</h5>
@@ -189,6 +189,12 @@ export default {
 
 div {
   background-color: #f3f3f3;
+}
+
+.img-detail {
+  height: 25vh;
+  object-fit: cover;
+  object-position: center;
 }
 </style>
 
