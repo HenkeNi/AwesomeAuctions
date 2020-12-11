@@ -35,9 +35,12 @@ export default {
   margin: auto;
   margin-top: 15px;
   padding-top: 20px;
-  box-shadow:0 0 15px 4px rgb(0, 0, 0);
+  color:white;
   border-radius: 10px;
-  border: 1px solid red;
+}
+
+.input-field{
+  color:white
 }
 
 
