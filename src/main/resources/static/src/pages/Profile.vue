@@ -1,11 +1,11 @@
 <template>
 <div class="profile-page">
   <div>
-    <h4>
+    <h3>
      Hej {{ user.name }}!
-    </h4>
-    <p>Phone: {{ user.phone }}</p>
-    <p>Email: {{ user.email }}</p>
+    </h3>
+    <h4>Phone: {{ user.phone }}</h4>
+    <h4>Email: {{ user.email }}</h4>
   </div>
 </div>
 </template>
@@ -23,7 +23,7 @@ export default{
       console.log('hej')
       let user = this.$store.getters.currentUser;
       //let user = JSON.parse(localStorage.getItem('currentUser'));
-      console.log("Current User: ", user);
+      //console.log("Current User: ", user);
       this.user = user
     }
   },
@@ -35,8 +35,18 @@ export default{
 
  </script>
 
- <style scoped>
- .profile-page{
-   background-image: url('../assets/background2.jpg');
- }
+ <style>
+.profile-page h4{
+  color:white;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.profile-page h3{
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
  </style>
