@@ -1,16 +1,16 @@
 
 <template>
-  <nav>
+  <nav class="nav-style">
     <div class="nav-wrapper">
       <a href="/" class="brand-logo center darken">Awesome Auction</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/">Home</a></li>
         <li><a href="/contact">About</a></li>
-        <li><a href="/createAuction">Create</a></li>
-        <li><a href="/profile">Profile</a></li>
-        <li><a class="modal-trigger" href="#login" >Log In</a>
-        <li><a href="#signup" class="modal-trigger" >Create Account</a></li>
-        <li><a href="/" @click.prevent="logout" >Log Out</a></li>
+        <li><a href="/createAuction" v-if="this.$store.getters.loggedInStatus == true">Create</a></li>
+        <li><a href="/profile" v-if="this.$store.getters.loggedInStatus == true">Profile</a></li>
+        <li><a class="modal-trigger" href="#login" v-if="this.$store.getters.loggedInStatus == false">Log In</a>
+        <li><a href="#signup" class="modal-trigger" v-if="this.$store.getters.loggedInStatus == false">Create Account</a></li>
+        <li><a href="/" @click.prevent="logout" v-if="this.$store.getters.loggedInStatus == true">Log Out</a></li>
         
   <!-- Modal Structure -->
   <div id="login" class="modal">
@@ -22,7 +22,7 @@
             <!-- <hr class="hr-style"> -->
             <form @submit.prevent="login">
               <div class="input-field">
-                <input type="email" id="email" v-model="email" />
+                <input type="email" id="email" v-model="email"/>
                 <label for="email">E-mail</label>
               </div>
               <div class="input-field">
@@ -68,16 +68,21 @@ export default {
     return {
       email: "",
       password: "",
-      isLoggedin: false,
     }
   },
   methods: {
+    isLoggedIn(){
+      let currentUser = localStorage.getItem('currentUser')
+      console.log(currentUser)
+      if (currentUser == null){
+        return false
+      }
+      return true
+    },
     async logout(){
       console.log('logging out');
       this.$store.commit('setIsLoggedIn', false)
-      await fetch('http://localhost:5000/logout', {
-      
-      })
+      localStorage.clear();
     },
     closeSignup() {
      
@@ -140,7 +145,14 @@ background-color: red;
 }
 
 .nav-wrapper {
-  background-color: rgb(100, 98, 98);
+  background: -webkit-linear-gradient(to top, rgb(188,140,78), #dfd3fb);
+  background: linear-gradient(to top, rgb(0,0,0), rgb(188,140,78));
+  box-shadow:0px 0px 15px black;
+  font-weight:bold;
+}
+
+.nav-wrapper a:hover{
+  transform:translate(4px,3px);
 }
 
 .nav-info{
@@ -150,6 +162,7 @@ background-color: red;
   align-content: space-between;
    display: flex;
 }
+
 @media screen and (min-width: 0px) and (max-width: 400px) {
   #my-content { display: block; }  /* show it on small screens */
 }

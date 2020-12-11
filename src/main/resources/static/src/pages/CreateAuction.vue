@@ -91,6 +91,7 @@ export default {
 
 <style>
 .auction {
+    font-weight:bold;
     margin:0 auto;
 }
 
@@ -108,6 +109,10 @@ export default {
 
 .create-auction {
     margin-top: 40px;
+}
+
+.containerAuction{
+    color:white;
 }
 
 </style>

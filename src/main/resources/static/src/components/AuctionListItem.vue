@@ -1,17 +1,17 @@
 <template>
   <div @click="goToAuctionDetails(auction)" class="auction-item">
     <!-- <img class="item-img" src="https://i.ebayimg.com/images/g/N0oAAOSwmo1fdoDf/s-l640.jpg" /> -->
-    <img class="item-img" :src="auction.imageURL" />
-    <div class="item-desc">
+    <img class="item-img responsive-img" :src="auction.imageURL" />
+    <div class="item-desc transparent">
       <h3 class="product-name">{{ auction.productName }}</h3>
-      <div class="currentbid">
+      <div class="currentbid transparent">
         <!-- <h4>Starting bid: {{ auction.startBid }}</h4> -->
         <!-- <h5>Current Bid: {{ (auction.currentBid == undefined ? "Not Available" : auction.currentBid) }}</h5> -->
-        <h5>Current Bid: {{ (currentBid == undefined || currentBid === 0 ? "No bid" : currentBid) }}</h5>
+        <h5 class="transparent">Current Bid: {{ (currentBid == undefined || currentBid === 0 ? "No bid" : currentBid) }}</h5>
       </div>
       
-      <div class="expires">
-        <h4>Ends on: {{ auction.endDate }}</h4>
+      <div class="expires transparent">
+        <h4 class="transparent">Ends on: {{ auction.endDate }}</h4>
       </div>
     </div>
    </div>
@@ -66,14 +66,19 @@ export default {
   margin: 5px 20px 5px 20px;
   /* padding-left: 15px; */
   cursor: pointer;
-  background-color: white;
+  background-image: url('../assets/auctionlistItem.jpg');
   border: 2px solid darkgray;
+  box-shadow:0px 0px 15px white;
+  border-radius: 15px;
+  border-color: black;
 }
 
 .item-desc {
   text-align: start;
   padding: 0px 15px;
   background-color: white;
+  color: whitesmoke;
+  font-weight: bold;
   /* padding-left: 25px; */
 }
 
@@ -112,11 +117,11 @@ h5 {
   margin: 0px;
   padding-bottom: 2px;
   padding-top: 20px;
+  color: whitesmoke;
 }
 
-.item-img {
-  height: 30vh;
-  object-fit: cover;
-  object-position: center;
-}
+/* .item-img {
+  width: 20vw;
+  height: 30vw;
+} */
 </style>

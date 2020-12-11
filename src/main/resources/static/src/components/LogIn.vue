@@ -7,11 +7,11 @@
             <hr class="hr-style">
             <form @submit="login">
               <div class="input-field">
-                <input type="email" id="email" v-model="email" />
+                <input type="email" id="email" v-model="email" class="input-field"/>
                 <label for="email">E-post</label>
               </div>
               <div class="input-field">
-                <input type="password" id="password" v-model="password" />
+                <input type="password" id="password" v-model="password" class="input-field"/>
                 <label for="password">Lösenord</label>
               </div>
               <div class="alert center red-text" v-if="alert !== ''">
@@ -45,3 +45,13 @@ export default {
   }
 }
   </script>
+
+  <style>
+  .input-field{
+    border-radius: 10px;
+  }
+
+  .container-fluid{
+    border-radius: 30px;
+  }
+  </style>

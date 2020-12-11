@@ -1,9 +1,12 @@
 <template>
-<div>
-<div>Hej {{ this.$store.getters.currentUser.name }}!</div>
-<p>Phone: {{ this.$store.getters.currentUser.phone }}</p>
-<p>Email: {{ this.$store.getters.currentUser.email }}</p>
-
+<div class="profile-page">
+  <div>
+    <h3>
+     Hej {{ user.name }}!
+    </h3>
+    <h4>Phone: {{ user.phone }}</h4>
+    <h4>Email: {{ user.email }}</h4>
+  </div>
 </div>
 </template>
  
@@ -20,7 +23,7 @@ export default{
       console.log('hej')
       let user = this.$store.getters.currentUser;
       //let user = JSON.parse(localStorage.getItem('currentUser'));
-      console.log("Current User: ", user);
+      //console.log("Current User: ", user);
       this.user = user
     }
   },
@@ -31,3 +34,19 @@ export default{
 }
 
  </script>
+
+ <style>
+.profile-page h4{
+  color:white;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.profile-page h3{
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+ </style>

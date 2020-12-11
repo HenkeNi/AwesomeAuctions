@@ -13,6 +13,7 @@ import Footer from './components/Footer.vue'
 export default {
   name: 'app',
   methods: {
+    
 
     async fetchAuctions() {
       this.$store.dispatch('fetchAuctions');
@@ -57,16 +58,28 @@ export default {
 
 
 <style>
+.transparent{
+  background-color: transparent;
+}
+
+body{
+  background-image: url("./assets/background.jpg");
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  
 }
 
 #nav {
   padding: 30px;
+  background-color: red;
 }
 
 #nav a {

@@ -5,8 +5,8 @@
       <div class="img-container">
         <img class="img-detail" :src="this.$route.params.auction.imageURL" />
       </div>
-      <div class="description">
-        <h5>Description</h5>
+      <div class="description transparent">
+        <h5 class="transparent">Description</h5>
         <p>{{ this.$route.params.auction.id }}</p>
       </div>
     </div>
@@ -153,14 +153,14 @@ export default {
 <style>
 .container {
   width: 80vw;
-  background-color: pink;
+  background-color: transparent;
   margin: auto;
 }
 
 .main-container {
   display: flex;
   justify-content: center;
-  
+  background-color: transparent;
 }
 
 .main-container img {
@@ -188,7 +188,7 @@ export default {
 }
 
 div {
-  background-color: #f3f3f3;
+  background-color: transparent;
 }
 
 .img-detail {
@@ -196,5 +196,25 @@ div {
   object-fit: cover;
   object-position: center;
 }
+
+.description{
+  color:whitesmoke
+}
+
+.bottom-container h6{
+  color: black;
+  font-weight: bold;
+}
+
+.btn{
+  background-color: rgb(188,140,78);
+}
+
+.validate{
+  color: white;
+  border-radius: 8px;
+  border-color: rgb(188,140,78);
+}
+
 </style>
 

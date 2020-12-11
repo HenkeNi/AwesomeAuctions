@@ -3,9 +3,9 @@
     <div>
       <a href="#" class="brand-logo center">Connect with us!</a>
       <ul id="nav-mobile" class="center hide-on-med-and-down">
-        <li><a href="/contact">Contact</a></li>
-        <li><a href="badges.html">Facebook</a></li>
-        <li><a href="collapsible.html">Twitter</a></li>
+        <li><a class="hover-effect" href="/contact">Contact</a></li>
+        <li><a class="hover-effect" href="badges.html">Facebook</a></li>
+        <li><a class="hover-effect" href="collapsible.html">Twitter</a></li>
       </ul>
     </div>
   </nav>
@@ -26,8 +26,15 @@ export default {
 <style scoped>
 
 .footer{
-  background-color: rgb(100, 98, 98) !important;
+  background: -webkit-linear-gradient(to top, rgb(188,140,78), #dfd3fb);
+  background: linear-gradient(to top, rgb(0,0,0), rgb(188,140,78));
+  box-shadow:0px 0px 15px black;
+  font-weight:bold;
   position: fixed;
   bottom: 0;
+}
+
+.hover-effect:hover{
+  transform:translate(-4px,-3px);
 }
 </style>

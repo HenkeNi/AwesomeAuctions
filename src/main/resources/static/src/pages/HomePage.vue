@@ -1,9 +1,9 @@
 <template>
-  <div class="home-page">
+  <div>
     <div class="search-field">
-      <input v-model="search" type="text" placeholder="Search Auction..." />
+      <input v-model="search" type="text" placeholder="Search Auction..." class="input-field"/>
     </div>
-      <AuctionList />
+      <AuctionList class="test"/>
   </div>
 </template>
 
@@ -30,18 +30,22 @@ export default {
 </script>
 
 <style>
-.home-page h1 {
-    text-align: center;
-}
-
 .search-field {
   width: 80vw;
   margin: auto;
+  margin-top: 15px;
   padding-top: 20px;
+  color:white;
+  border-radius: 10px;
 }
 
+.input-field{
+  color:white
+}
+
+
 div {
-  background-color: #f3f3f3;
+  background-color: transparent;
 }
 </style>
 
