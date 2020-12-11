@@ -1,8 +1,8 @@
 <template>
   <div @click="goToAuctionDetails(auction)" class="auction-item">
     <!-- <img class="item-img" src="https://i.ebayimg.com/images/g/N0oAAOSwmo1fdoDf/s-l640.jpg" /> -->
-    <img class="item-img" :src="auction.imageURL" />
-    <div class="item-desc">
+    <img class="item-img responsive-img" :src="auction.imageURL" />
+    <div class="item-desc transparent">
       <h3 class="product-name">{{ auction.productName }}</h3>
       <div class="currentbid transparent">
         <!-- <h4>Starting bid: {{ auction.startBid }}</h4> -->
