@@ -93,7 +93,7 @@ export default {
     text-align: start;
     padding-left: 25px;
     font-weight:bold;
-    color:black
+    color:white
   }
 
 </style>
