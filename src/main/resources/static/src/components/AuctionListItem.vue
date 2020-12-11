@@ -66,8 +66,9 @@ export default {
   cursor: pointer;
   background-image: url('../assets/auctionlistItem.jpg');
   border: 2px solid darkgray;
-  box-shadow:0px 0px 12px black;
+  box-shadow:0px 0px 15px white;
   border-radius: 15px;
+  border-color: black;
 }
 
 .item-desc {
