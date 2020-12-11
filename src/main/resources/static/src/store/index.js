@@ -8,9 +8,9 @@ export default new Vuex.Store({
   state: {
     auctionList: [],
     auctionSearched: "",
-    //user: null,
     isLoggedIn: false,
     currentUser: Object,
+    currentUserEmail: "",
   },
   getters: {
     auctionList(state) {
@@ -19,15 +19,14 @@ export default new Vuex.Store({
     auctionSearched(state) {
       return state.auctionSearched;
     },
-    currentUser() {
-      return JSON.parse(localStorage.getItem('currentUser'));
+    currentUser(state) {
+      //return JSON.parse(localStorage.getItem('currentUser'));
       //localStorage.getItem('currentUser');
-      //return state.currentUser;
+      return state.currentUser;
     },
-
-    // user(state) {
-    //   return state.user;
-    // },
+    currentUserEmail() {
+      return JSON.parse(localStorage.getItem('currentUserEmail'));
+    },
     loggedInStatus(state) {
       return state.isLoggedIn
     },
@@ -39,20 +38,16 @@ export default new Vuex.Store({
     setAuctionSearched(state, searched) {
       state.auctionSearched = searched;
     },
-    setCurrentUser(user) {
-      //state.currentUser = user;
-      localStorage.setItem('currentUser', user);
+    setCurrentUser(state, user) {
+      state.currentUser = user;
+      //localStorage.setItem('currentUser', user);
     },
-    // setUser(state, user) {
-    //   state.user = user;
-    // },
+    setCurrentUserEmail(email) {
+      localStorage.setItem('currentUserEmail', email);
+    },
     setIsLoggedIn(state, isLoggedIn){
       state.isLoggedIn = isLoggedIn
     },
-    // currentlyLoggedInUser(state, user) {
-    //   localStorage.setItem('currentUser', user);
-    //   state.currentUser = user;
-    // },
   },
   actions: {
     async fetchAuctions({ commit }) {

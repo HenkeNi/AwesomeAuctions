@@ -78,9 +78,11 @@ public class UserController {
     }
 
 
-    @PostMapping("/autologin")
-    public User loginUser(@RequestBody User user) {
-        return userService.findByEmail(user.getEmail());
+    //@GetMapping("/a       utologin")
+    @GetMapping("/autologin:{mail}")
+    public User loginUser(@PathVariable String mail) {
+        System.out.printf("USER EMAIl", mail);
+        return userService.findByEmail(mail);
     }
 
     @PostMapping("/login")

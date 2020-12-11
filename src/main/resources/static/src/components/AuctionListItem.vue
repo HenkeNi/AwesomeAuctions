@@ -1,7 +1,8 @@
 <template>
   <div @click="goToAuctionDetails(auction)" class="auction-item">
-    <img class="item-img responsive-img" src="https://i.ebayimg.com/images/g/N0oAAOSwmo1fdoDf/s-l640.jpg" />
-    <div class="item-desc transparent">
+    <!-- <img class="item-img" src="https://i.ebayimg.com/images/g/N0oAAOSwmo1fdoDf/s-l640.jpg" /> -->
+    <img class="item-img" :src="auction.imageURL" />
+    <div class="item-desc">
       <h3 class="product-name">{{ auction.productName }}</h3>
       <div class="currentbid transparent">
         <!-- <h4>Starting bid: {{ auction.startBid }}</h4> -->
@@ -53,6 +54,7 @@ export default {
     },
   },
   created() {
+    console.log(this.auction.imageURL);
     this.fetchCurrentBid();
   }
 }
@@ -116,11 +118,6 @@ h5 {
   padding-bottom: 2px;
   padding-top: 20px;
   color: whitesmoke;
-}
-
-.item-img{
-  box-shadow:0px 0px 15px black;
-  border-radius: 8px;
 }
 
 /* .item-img {
