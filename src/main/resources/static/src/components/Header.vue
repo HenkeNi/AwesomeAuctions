@@ -22,7 +22,7 @@
             <!-- <hr class="hr-style"> -->
             <form @submit.prevent="login">
               <div class="input-field">
-                <input type="email" id="email" v-model="email" />
+                <input type="email" id="email" v-model="email"/>
                 <label for="email">E-mail</label>
               </div>
               <div class="input-field">
