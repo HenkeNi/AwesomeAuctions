@@ -111,4 +111,8 @@ export default {
     margin-top: 40px;
 }
 
+.containerAuction{
+    color:white;
+}
+
 </style>
