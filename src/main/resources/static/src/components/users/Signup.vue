@@ -82,15 +82,8 @@ button {
   border: 0;
   height: 1px;
   margin: 0 0 10px 0;
-  background: #fff;
-  background-image: -webkit-linear-gradient(
-    left,
-    rgb(255, 255, 255),
-    rgba(184, 10, 103, 0.993),
-    rgb(255, 255, 255)
-  );
 }
 .btn {
-  background: #ee6e73;
+  background: rgb(188,140,78);
 }
 </style>
